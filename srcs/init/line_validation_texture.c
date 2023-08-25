@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_texture.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:45:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/22 21:29:09 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:51:07 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ int	line_validation_texture(t_game *game)
 	split = ft_split(game->str, ' ');
 	if (split == NULL)
 		return (FAILURE);
-	if (0) //인자값이 2개가 아니라면 작동
+	if (count_arguments(split, 2)) //인자값이 2개가 아니라면 작동
 	{
 		free_split(split);
 		return (FAILURE);
 	}
 	if (ft_strncmp(game->str, "NO ", 3) == 0)
 	{
+		if(!split[1] || game->north_path != NULL)
+		{
+			free_split(split);
+			return (FAILURE);
+		}
 		game->north_path = ft_strdup(split[1]);
 		if (game->north_path == NULL)
 		{
@@ -36,6 +41,11 @@ int	line_validation_texture(t_game *game)
 	}
 	else if (ft_strncmp(game->str, "SO ", 3) == 0)
 	{
+		if(!split[1] || game->south_path != NULL)
+		{
+			free_split(split);
+			return (FAILURE);
+		}
 		game->south_path = ft_strdup(split[1]);
 		if (game->south_path == NULL)
 		{
@@ -46,6 +56,11 @@ int	line_validation_texture(t_game *game)
 	}
 	else if (ft_strncmp(game->str, "WE ", 3) == 0)
 	{
+		if(!split[1] || game->west_path != NULL)
+		{
+			free_split(split);
+			return (FAILURE);
+		}
 		game->west_path = ft_strdup(split[1]);
 		if (game->west_path == NULL)
 		{
@@ -56,6 +71,11 @@ int	line_validation_texture(t_game *game)
 	}
 	else if (ft_strncmp(game->str, "EA ", 3) == 0)
 	{
+		if(!split[1] || game->east_path != NULL)
+		{
+			free_split(split);
+			return (FAILURE);
+		}
 		game->east_path = ft_strdup(split[1]);
 		if (game->east_path == NULL)
 		{

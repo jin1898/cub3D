@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:32:57 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/22 20:49:34 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:38:10 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	destroy_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->art.west);
 	if (game->art.east != NULL)
 		mlx_destroy_image(game->mlx, game->art.east);
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx != NULL && game->win != NULL)
+		mlx_destroy_window(game->mlx, game->win);
 	return (SUCCESS);
 }

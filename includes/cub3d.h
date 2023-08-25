@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/22 20:44:27 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:18:11 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ int			line_validation_texture(t_game *game);
 int			line_validation_rgb(t_game *game);
 int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
+
+/*헐 이거 어따넣어야하는거지?*/
+int			count_arguments(char **str, int total);
 
 # endif
