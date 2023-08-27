@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 15:07:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/27 20:28:49 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int main(int argc, char **argv)
 1. atoi 0~9까지만 변형가능하게 바꿈
 2. 인자값 처리 완료
 	2-1. NO ./textures/Blue_Nebula_03-1024x1024.xpm 가 아닌 NO만들어왔을때 처리함
-	2-2. F 20,20,20   / C 165,229,255 의 인자 갯수 확인 하는거 완료 
+	2-2. F 20,20,20   / C 165,229,255 의 인자 갯수 확인 하는거 완료
 	2-3. NO ./textures/Blue_Nebula_03-1024x1024.xpm 가 아닌 NO ./textures/Blue_Nebula_03-1024x1024.xpm 1 가 들어왔을때 에러처리함
-	2-4. NO SO WE EA F C 하나라도 없을떄 처리함 
+	2-4. NO SO WE EA F C 하나라도 없을떄 처리함
 	2-5. NO SO WE EA가 중복이 있을때 에러처리함(F,C중복처리는 되어있었음.)
 2023/8/25 -end-
 
@@ -58,6 +58,11 @@ int main(int argc, char **argv)
 1. 맵유효성 검사 만드는중
 	1-1. 파일이름 ".cub"형식인지 확인 [파일이름.cub / 파일이름.cub.cub / .cub] 모두 참으로 처리됨 [ 파일이름.cuba / .cuba ] 오류로 처리완료
 2023/8/26 -end-
+
+2023/8/27 -start-
+%에러발견% : 파일명.cuba를 할시 segmentation fault 가 뜨는데 destroy_game.c:18 에서 뜬다. 인자값들이 NULL이 아니다.(집에서는 에러가 안났는데..)
+%에러발견% : ./cub3D 를 입력하면 (인자값이 없을시)destroy_game.c:18 에서 에러가뜬다.
+2023/8/27 -end-
 
 
 의문점 -start-
