@@ -6,7 +6,7 @@
 #    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/08/25 14:53:51 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/08/26 15:09:33 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_rgb.c				\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
+					srcs/init/map_validation.c					\
 					srcs/utils/rgb8_to_int.c					\
 					srcs/utils/set_pixel.c						\
 					srcs/utils/exit_game.c						\
@@ -32,7 +33,7 @@ SRCS			=	srcs/main.c									\
 					srcs/utils/key_press.c						\
 					srcs/utils_shape/rect.c						\
 					srcs/utils_shape/background_fill.c			\
-					srcs/utils_shape/line.c				
+					srcs/utils_shape/line.c
 OBJS			=	$(SRCS:.c=.o)
 
 LIBFT_A			=	srcs/libft/libft.a

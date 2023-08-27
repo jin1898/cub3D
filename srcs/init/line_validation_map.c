@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 16:57:55 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/22 15:34:22 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:11:42 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	_add_split(char *to_add, t_game *game, size_t *line_count)
 	return (SUCCESS);
 }
 
-static int	_check_line(char *str, t_game *game)
+static int	_check_line(char *str)
 {
 	size_t	i;
 
@@ -59,7 +59,7 @@ static int	_check_line(char *str, t_game *game)
 
 static int	_start_section(char *str, t_game *game)
 {
-	if (_check_line(str, game) == FAILURE)
+	if (_check_line(str) == FAILURE)
 		return (FAILURE);
 	game->map = (char **)malloc(sizeof(char *) * 2);
 	if (game->map == NULL)

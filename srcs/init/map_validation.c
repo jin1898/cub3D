@@ -3,25 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/22 21:19:00 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/08/26 17:26:54 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	_is_surround(char **map, t_vector *pos)
+static void	get_move(int *x, int *y, int i)
 {
-	
+	if (i == 0)
+		*x += 1;
+	else if (i == 1)
+		*y += -1;
+	else if (i == 2)
+		*x += -1;
+	else if (i == 3)
+		*y += 1;
+	return ;
+}
+
+static int	ft_move(char **map, int x, int y, int i)
+{
+	if (i == 0)
+		x += 1;
+	else if (i == 1)
+		y += -1;
+	else if (i == 2)
+		x += -1;
+	else if (i == 3)
+		y += 1;
+	return (map[x][y]);
+}
+
+static int	_is_surround(char **map, int x, int y)
+{
+	int	i;
+	int	result;
+
+	i = 0;
+	while (i < 4)
+	{
+		result = ft_move(map, x, y, i);
+		if (result == '0' || result == 'N' || result == 'S' || result == 'W' || result == 'E')
+		{
+			map[x][y] = '2';
+			get_move(&x, &y, i);
+			_is_surround(map, x, y);
+		}
+		else if (result != '1' && result != '2')
+			return (1);
+		if(map[x][y] == '0' || map[x][y] == 'N' || map[x][y] == 'S' || map[x][y] == 'W' || map[x][y] == 'E')
+			map[x][y] = '2';
+		i++;
+	}
+	return(0);
 }//bfs/dfs 본격 몸통부분
 
 static void	_set_player(int x, int y, char dir, t_game *game)
-{
+{//문제발생 N S W는 있는데 E는?? 
 	game->player_pos.x = x;
 	game->player_pos.y = y;
-	if (dir = 'N')
+	if (dir == 'N')
 		game->player_dir.y = -1;
 	else if (dir == 'S')
 		game->player_dir.y = 1;
@@ -40,20 +85,20 @@ static int	_player_count(char **map, t_game *game)
 	x = 0;
 	y = 0;
 	res = 0;
-	while (map[y])
+	while (map[x])
 	{
-		while (map[y][x])
+		while (map[x][y])
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S'
-				|| map[y][x] == 'W' || map[y][x] == 'E')
+			if (map[x][y] == 'N' || map[x][y] == 'S'
+				|| map[x][y] == 'W' || map[x][y] == 'E')
 				{
 					_set_player(x, y, map[y][x], game);
 					res++;
 				}
-			x++;
+			y++;
 		}
-		y++;
-		x = 0;
+		x++;
+		y = 0;
 	}
 	return (res);
 }//주인공이몇명인지 체크
@@ -62,5 +107,7 @@ int	map_validation(t_game *game)
 {
 	if (_player_count(game->map, game) != 1)
 		return (FAILURE);
-	
+	if(_is_surround(game->map, game->player_pos.x, game->player_pos.y))
+		return (FAILURE);
+	return (SUCCESS);
 }// bfs/dfs 할려고 했음.(헤드부분)

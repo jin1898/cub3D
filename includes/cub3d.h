@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/25 21:18:11 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/26 15:10:25 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ int			load_images(t_game *game);
 
 /*헐 이거 어따넣어야하는거지?*/
 int			count_arguments(char **str, int total);
+int			map_validation(t_game *game);
 
 # endif

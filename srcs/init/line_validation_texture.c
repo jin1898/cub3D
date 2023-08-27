@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:45:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/25 21:51:07 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/26 08:22:03 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	line_validation_texture(t_game *game)
 {
 	char	**split;
-	
+
 	split = ft_split(game->str, ' ');
 	if (split == NULL)
 		return (FAILURE);

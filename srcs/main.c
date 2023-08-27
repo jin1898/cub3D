@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/25 21:53:21 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/26 15:07:43 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int main(int argc, char **argv)
 		exit_game(&game);
 		return (EXIT_FAILURE);
 	}
-
 	background_fill(&game, rgb8_to_int(200, 100, 100));
 	rect(&game, set_pixel(10, 10), set_pixel(90, 90), rgb8_to_int(220, 0, 60));
 	rect(&game, set_pixel(100, 10), set_pixel(180, 90), rgb8_to_int(0, 40, 210));
@@ -42,6 +41,9 @@ int main(int argc, char **argv)
 }
 
 /*
+!!!! 문제가 발생할만한 부분에는  " //문제발생 [설명]" 이라고 적음 !!!!
+
+
 2023/8/25 -start-
 1. atoi 0~9까지만 변형가능하게 바꿈
 2. 인자값 처리 완료
@@ -51,4 +53,14 @@ int main(int argc, char **argv)
 	2-4. NO SO WE EA F C 하나라도 없을떄 처리함 
 	2-5. NO SO WE EA가 중복이 있을때 에러처리함(F,C중복처리는 되어있었음.)
 2023/8/25 -end-
+
+2023/8/26 -start-
+1. 맵유효성 검사 만드는중
+	1-1. 파일이름 ".cub"형식인지 확인 [파일이름.cub / 파일이름.cub.cub / .cub] 모두 참으로 처리됨 [ 파일이름.cuba / .cuba ] 오류로 처리완료
+2023/8/26 -end-
+
+
+의문점 -start-
+1. -save옵션 뭐징? 이거 멘데토리에도 없는뎀 (2021년도부터 맵"2"와 함께 구현하는거 없어짐)
+의문점 -end-
 */
