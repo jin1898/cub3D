@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 16:57:55 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 15:11:42 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/28 09:03:30 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 15:10:25 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/28 21:29:07 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 
 # include <fcntl.h>
-# include <string.h> 
-# include <stdio.h> 
+# include <string.h>
+# include <stdio.h>
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
@@ -25,7 +25,7 @@
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_DESTROY 17
-# define KEY_W 13   
+# define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -83,6 +83,7 @@ typedef struct s_game
 	char			**map;
 	int				fd;
 	char			*str;
+	size_t			x_num;
 	size_t			line_count;
 	t_art			art;
 	t_vector		player_pos;
@@ -118,5 +119,10 @@ int			load_images(t_game *game);
 /*헐 이거 어따넣어야하는거지?*/
 int			count_arguments(char **str, int total);
 int			map_validation(t_game *game);
+
+
+/*제출전 지워야하는 함수*/
+void		ft_print_dfs_CurrentSituation(char **map);
+int		free_map(char **map, size_t cnt); //완전히 지우는게아닌 static으로할지 /*헐 이거 어따넣어야하는거지?*/에 넣어야할지  고민해야함.
 
 # endif

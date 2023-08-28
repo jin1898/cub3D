@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/08/26 15:09:33 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/08/28 20:58:35 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS			=	srcs/main.c									\
 					srcs/utils/free_game.c						\
 					srcs/utils/destroy_game.c					\
 					srcs/utils/key_press.c						\
+					srcs/utils/trash.c							\
 					srcs/utils_shape/rect.c						\
 					srcs/utils_shape/background_fill.c			\
 					srcs/utils_shape/line.c

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/27 20:28:49 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/28 22:12:44 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	if (init_cub3d(&game, argc, argv) == FAILURE)
 	{
 		printf("Error\nInit failed\n");
-		exit_game(&game);
+		// exit_game(&game);
 		return (EXIT_FAILURE);
 	}
 	background_fill(&game, rgb8_to_int(200, 100, 100));
@@ -64,8 +64,4 @@ int main(int argc, char **argv)
 %에러발견% : ./cub3D 를 입력하면 (인자값이 없을시)destroy_game.c:18 에서 에러가뜬다.
 2023/8/27 -end-
 
-
-의문점 -start-
-1. -save옵션 뭐징? 이거 멘데토리에도 없는뎀 (2021년도부터 맵"2"와 함께 구현하는거 없어짐)
-의문점 -end-
 */
