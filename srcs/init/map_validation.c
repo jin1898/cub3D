@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/28 21:44:50 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/28 22:21:18 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,9 @@ int	map_validation(t_game *game)
 	if (_player_count(game->map, game) != 1)
 		return (FAILURE);
 	if(_is_surround(game->map, game))
+	{
+		free_map(game->map, game->x_num - 2);
 		return (FAILURE);
+	}
 	return (SUCCESS);
 }// bfs/dfs 할려고 했음.(헤드부분)
