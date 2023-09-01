@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/28 22:21:18 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/01 13:10:17 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /*------DFS------start-------*/
 int	check_map(char **map, size_t x, size_t y)
 {
-	int	g_dirx[8] = {-1, 0, 1, 0, -1, -1, 1, 1}; //서, 남, 동, 북, 북서, 남서, 남동, 북동
-	int	g_diry[8] = {0, 1, 0, -1, -1, 1, 1, -1};
+	int	g_dirx[8] = {-1, 0, 1, 0}; //서, 남, 동, 북, 북서, 남서, 남동, 북동
+	int	g_diry[8] = {0, 1, 0, -1};
 	int i;
 
 	if (map[y][x] == '1' || map[y][x] == 'x')
@@ -28,7 +28,7 @@ int	check_map(char **map, size_t x, size_t y)
 	ft_print_dfs_CurrentSituation(map); // 지워야함
 	/* 0을 만나 함수를 재귀 호출 */
 	i = -1;
-	while (++i < 8)
+	while (++i < 4)
 		if (check_map(map, x + g_dirx[i], y + g_diry[i]) == 0) //g_dirx와 g_diry로 8방향 이동
 			return (0);
 	return (1);
@@ -103,7 +103,7 @@ char	**init_map(char **map, t_game *game)
 	return (test_map);
 }
 
-int		free_map(char **map, size_t cnt)
+/* int		free_map(char **map, size_t cnt)
 {
 	while (1)
 	{
@@ -117,7 +117,7 @@ int		free_map(char **map, size_t cnt)
 	}
 	free(map);
 	return (0);
-}
+} */
 
 static int	_is_surround(char **map, t_game *game)
 {
@@ -139,13 +139,13 @@ static int	_is_surround(char **map, t_game *game)
 				isMap_empty = 1;
 				if (check_map(test_map, x, y) == 0)
 				{
-					free_map(test_map, game->x_num);
+					free_split(test_map);
 					return(FAILURE);
 				}
 			}
 		}
 	}
-	free_map(test_map, game->x_num);
+	free_split(test_map);
 	if (isMap_empty == 0)
 		return(FAILURE);
 	return(SUCCESS);
@@ -200,9 +200,6 @@ int	map_validation(t_game *game)
 	if (_player_count(game->map, game) != 1)
 		return (FAILURE);
 	if(_is_surround(game->map, game))
-	{
-		free_map(game->map, game->x_num - 2);
 		return (FAILURE);
-	}
 	return (SUCCESS);
 }// bfs/dfs 할려고 했음.(헤드부분)

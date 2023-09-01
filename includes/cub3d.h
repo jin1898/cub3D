@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/28 21:29:07 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/01 14:00:32 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			rgb8_to_int(int r, int g, int b);
 int			exit_game(t_game *game);
 void		free_split(char	**to_free);
 void		free_game(t_game *game);
-int			destroy_game(t_game *game);
+int			destroy_instance(t_game *game);
 int			key_press(int keycode, t_game *game);
 
 /* srcs/utils_shape/ */

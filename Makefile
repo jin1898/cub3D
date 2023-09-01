@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/08/28 20:58:35 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/01 14:01:00 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS			=	srcs/main.c									\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
-					srcs/utils/destroy_game.c					\
+					srcs/utils/destroy_instance.c				\
 					srcs/utils/key_press.c						\
 					srcs/utils/trash.c							\
 					srcs/utils_shape/rect.c						\

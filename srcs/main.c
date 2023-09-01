@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/28 22:12:44 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/01 13:39:32 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	if (init_cub3d(&game, argc, argv) == FAILURE)
 	{
 		printf("Error\nInit failed\n");
-		// exit_game(&game);
+		exit_game(&game);
 		return (EXIT_FAILURE);
 	}
 	background_fill(&game, rgb8_to_int(200, 100, 100));
@@ -58,10 +58,4 @@ int main(int argc, char **argv)
 1. 맵유효성 검사 만드는중
 	1-1. 파일이름 ".cub"형식인지 확인 [파일이름.cub / 파일이름.cub.cub / .cub] 모두 참으로 처리됨 [ 파일이름.cuba / .cuba ] 오류로 처리완료
 2023/8/26 -end-
-
-2023/8/27 -start-
-%에러발견% : 파일명.cuba를 할시 segmentation fault 가 뜨는데 destroy_game.c:18 에서 뜬다. 인자값들이 NULL이 아니다.(집에서는 에러가 안났는데..)
-%에러발견% : ./cub3D 를 입력하면 (인자값이 없을시)destroy_game.c:18 에서 에러가뜬다.
-2023/8/27 -end-
-
 */
