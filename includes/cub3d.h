@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 14:00:32 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:25:47 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-
 typedef struct s_pixel
 {
 	int	x;
@@ -49,7 +48,7 @@ typedef struct s_vector
 	double			y;
 }	t_vector;
 
-typedef struct s_check_parse
+typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 변수 
 {
 	size_t	north;
 	size_t	south;
@@ -58,7 +57,7 @@ typedef struct s_check_parse
 	size_t	floor;
 	size_t	ceiling;
 	size_t	map;
-	size_t	diff;
+	size_t	diff; //맵이 여러개인지 확인하는 변수 
 }	t_check_parse;
 
 typedef struct s_art
@@ -115,14 +114,11 @@ int			line_validation_texture(t_game *game);
 int			line_validation_rgb(t_game *game);
 int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
-
-/*헐 이거 어따넣어야하는거지?*/
-int			count_arguments(char **str, int total);
 int			map_validation(t_game *game);
+
 
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);
-int		free_map(char **map, size_t cnt); //완전히 지우는게아닌 static으로할지 /*헐 이거 어따넣어야하는거지?*/에 넣어야할지  고민해야함.
 
 # endif

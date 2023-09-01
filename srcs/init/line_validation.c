@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:21:14 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 13:54:22 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/01 16:25:50 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	_check_map_slice(char *str)
 int	line_validation(t_game *game)
 {
 	(game->line_count)++;
-	if (ft_strncmp(game->str, "", 1) == 0)//문제발생 무슨기능인지 모르겠음!
+	if (ft_strncmp(game->str, "", 1) == 0)//'\n'가 들어오면 ""문자열이 됨 즉 .cub에서 개행만 있을경우 체크 
 		;
 	else if (ft_strncmp(game->str, "NO ", 3) == 0
 		|| ft_strncmp(game->str, "SO ", 3) == 0
