@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 16:25:47 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/01 19:53:27 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "mlx.h"
 # include "libft.h"
 
-# define WIN_W 1280
-# define WIN_H 720
+# define WIN_W 1920
+# define WIN_H 1080
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_DESTROY 17
@@ -68,6 +68,18 @@ typedef struct s_art
 	void	*east;
 }	t_art;
 
+typedef struct s_mini
+{
+	void	*img;
+	size_t	size;
+	size_t	scale;
+	int		*mlx_data_addr;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}	t_mini;
+
+
 typedef struct s_game
 {
 	void			*mlx;
@@ -80,11 +92,13 @@ typedef struct s_game
 	int				floor_color;
 	int				ceiling_color;
 	char			**map;
+	size_t			map_y;
+	size_t			map_x;
 	int				fd;
 	char			*str;
-	size_t			x_num;
 	size_t			line_count;
 	t_art			art;
+	t_mini			mini;
 	t_vector		player_pos;
 	t_vector		player_dir;
 	t_check_parse	check_parse;
@@ -116,7 +130,8 @@ int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
 int			map_validation(t_game *game);
 
-
+/* srcs/play/ */
+int			reset_mini_map(t_game *game);
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);

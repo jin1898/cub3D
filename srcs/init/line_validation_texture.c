@@ -6,13 +6,13 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:45:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 15:56:38 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:53:43 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	count_arguments(char **str, int total)
+static int	_count_arguments(char **str, size_t total)
 {
 	size_t	i;
 
@@ -31,7 +31,7 @@ int	line_validation_texture(t_game *game)
 	split = ft_split(game->str, ' ');
 	if (split == NULL)
 		return (FAILURE);
-	if (count_arguments(split, 2) == FAILURE) //인자값이 2개가 아니라면 작동
+	if (_count_arguments(split, 2) == FAILURE) //인자값이 2개가 아니라면 작동
 	{
 		free_split(split);
 		return (FAILURE);
