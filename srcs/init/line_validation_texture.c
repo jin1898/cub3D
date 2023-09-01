@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_texture.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:45:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 08:22:03 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/01 15:56:38 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+static int	count_arguments(char **str, int total)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (i == total)
+		return(SUCCESS);
+	return(FAILURE);
+}
 
 int	line_validation_texture(t_game *game)
 {
@@ -19,7 +31,7 @@ int	line_validation_texture(t_game *game)
 	split = ft_split(game->str, ' ');
 	if (split == NULL)
 		return (FAILURE);
-	if (count_arguments(split, 2)) //인자값이 2개가 아니라면 작동
+	if (count_arguments(split, 2) == FAILURE) //인자값이 2개가 아니라면 작동
 	{
 		free_split(split);
 		return (FAILURE);
