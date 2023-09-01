@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 13:10:17 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/01 19:21:01 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,19 @@ char	**init_map(char **map, t_game *game)
 	char	**test_map;
 
 	/* 테두리 공간을 확보하기 위해 가로,세로가 2씩 큰 맵 생성 */
-	game->x_num = get_x(map);
-	if (!(test_map = (char **)malloc(sizeof(char *) * (game->x_num + 1))))
+	game->map_x = get_x(map);
+	if (!(test_map = (char **)malloc(sizeof(char *) * (game->map_x + 1))))
 		return (0);
-	test_map[game->x_num] = 0;	//null
+	test_map[game->map_x] = 0;	//null
 	y = -1;
-	size_t y_num = get_y(map);
-	while (++y < game->x_num)
+	game->map_y = get_y(map);
+	while (++y < game->map_x)
 	{
-		if (!(test_map[y] = (char *)malloc(sizeof(char) * (y_num + 1))))
+		if (!(test_map[y] = (char *)malloc(sizeof(char) * (game->map_y + 1))))
 			return (0);
-		test_map[y][y_num] = 0;	//null
+		test_map[y][game->map_y] = 0;	//null
 		x = -1;
-		while (++x < y_num)
+		while (++x < game->map_y)
 			test_map[y][x] = '3';	//공백으로 채움
 	}
 	printf("test_map\n");

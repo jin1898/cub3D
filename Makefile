@@ -6,7 +6,7 @@
 #    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/01 14:01:00 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/01 18:49:54 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\
+					srcs/play/reset_mini_map.c						\
 					srcs/utils/rgb8_to_int.c					\
 					srcs/utils/set_pixel.c						\
 					srcs/utils/exit_game.c						\

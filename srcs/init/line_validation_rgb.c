@@ -6,13 +6,13 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 16:26:13 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:48:42 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	count_arguments(char **str, size_t total)
+static int	_count_arguments(char **str, size_t total)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ static int	count_arguments(char **str, size_t total)
 	return(FAILURE);
 }
 
-static int	check_arguments(char **str)
+static int	_check_arguments(char **str)
 {
 	size_t	i1;
 	size_t	i2;
@@ -62,7 +62,7 @@ int	line_validation_rgb(t_game *game)
 	split = ft_split(game->str, ' ');
 	if (split == NULL)
 		return (FAILURE);
-	if (count_arguments(split, 2) == FAILURE) //(바닥,천장 스페이스기준/ 스플릿1번째)인자값이 2개가 아니라면 작동
+	if (_count_arguments(split, 2) == FAILURE) //(바닥,천장 스페이스기준/ 스플릿1번째)인자값이 2개가 아니라면 작동
 	{
 		free_split(split);
 		return (FAILURE);
@@ -71,14 +71,14 @@ int	line_validation_rgb(t_game *game)
 	free_split(split);
 	if (split_rgb == NULL)
 		return (FAILURE);
-	if (count_arguments(split_rgb, 3) == FAILURE) //(바닥,천장 콤마기준/ 스플릿2번째)인자값이 3개가 아니라면 작동
+	if (_count_arguments(split_rgb, 3) == FAILURE) //(바닥,천장 콤마기준/ 스플릿2번째)인자값이 3개가 아니라면 작동
 	{
 		free_split(split_rgb);
 		return (FAILURE);
 	}
 	if (ft_strncmp(game->str, "F ", 2) == 0)
 	{
-		if (check_arguments(split_rgb) == FAILURE)
+		if (_check_arguments(split_rgb) == FAILURE)
 		{
 			free_split(split_rgb);
 			return (FAILURE);
@@ -92,7 +92,7 @@ int	line_validation_rgb(t_game *game)
 	}
 	else if (ft_strncmp(game->str, "C ", 2) == 0)
 	{
-		if (check_arguments(split_rgb) == FAILURE)
+		if (_check_arguments(split_rgb) == FAILURE)
 		{
 			free_split(split_rgb);
 			return (FAILURE);
