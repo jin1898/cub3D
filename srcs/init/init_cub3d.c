@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:01:59 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/26 15:11:10 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/01 13:21:05 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	check_name(char *str)
 
 int	init_cub3d(t_game *game, int argc, char **argv)
 {
+	ft_memset(game, 0, sizeof(*game));
 	if (argc != 2 || check_name(argv[1]))
 		return (FAILURE);
-	ft_memset(game, 0, sizeof(*game));
 	game->argv = argv;
 	if (init_cub3d_parse(game) == FAILURE)
 		return (FAILURE);

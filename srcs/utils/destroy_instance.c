@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:32:57 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/28 21:18:28 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/01 14:00:47 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	destroy_game(t_game *game)
+int	destroy_instance(t_game *game)
 {
 	if (game->art.north != NULL && game->mlx != NULL)
 		mlx_destroy_image(game->mlx, game->art.north);
