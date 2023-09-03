@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 15:17:28 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/03 17:04:17 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,6 @@ char	**init_map(char **map, t_game *game)
 	ft_print_dfs_CurrentSituation(test_map);
 	return (test_map);
 }
-
-/* int		free_map(char **map, size_t cnt)
-{
-	while (1)
-	{
-		free(map[cnt]);
-		cnt--;
-		if(cnt == 0)
-		{
-			free(map[cnt]);
-			break;
-		}
-	}
-	free(map);
-	return (0);
-} */
 
 static int	_is_surround(char **map, t_game *game)
 {

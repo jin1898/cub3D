@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 16:44:54 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:09:05 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,6 @@ typedef struct s_art
 	void	*east;
 }	t_art;
 
-/* typedef struct s_mini
-{
-	void	*img;
-	size_t	size;
-	size_t	scale;
-	int		*mlx_data_addr;
-	int		bpp;
-	int		line_size;
-	int		endian;
-}	t_mini;
-
-typedef struct s_screen
-{
-	void	*img;
-	int		*mlx_data_addr;
-	int		bpp;
-	int		line_size;
-	int		endian;
-}	t_screen; */
-
 typedef struct s_component
 {
 	void	*img;
@@ -113,7 +93,7 @@ typedef struct s_game
 	char			**map;
 	size_t			map_y;
 	size_t			map_x;
-	int				mini_map_tile_scale;
+	double			mini_map_tile_size;
 	int				fd;
 	char			*str;
 	size_t			line_count;
@@ -145,8 +125,8 @@ int			load_images(t_game *game);
 int			map_validation(t_game *game);
 
 /* srcs/render/ */
-int			render_mini_map(t_game *game);
-int			render_game_scene(t_game *game);
+void		render_mini_map(t_game *game);
+void		render_game_scene(t_game *game);
 
 /* srcs/utils_draw */
 void		draw_pixel_to_img(t_component *component,
