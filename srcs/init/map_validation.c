@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 19:21:01 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/03 15:17:28 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,20 +177,20 @@ static int	_player_count(char **map, t_game *game)
 	y = 0;
 	res = 0;
 
-	while (map[x])
+	while (map[y])
 	{
-		while (map[x][y])
+		while (map[y][x])
 		{
-			if (map[x][y] == 'N' || map[x][y] == 'S'
-				|| map[x][y] == 'W' || map[x][y] == 'E')
+			if (map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
 				{
 					_set_player(x, y, map[y][x], game);
 					res++;
 				}
-			y++;
+			x++;
 		}
-		x++;
-		y = 0;
+		y++;
+		x = 0;
 	}
 	return (res);
 }//주인공이몇명인지 체크
