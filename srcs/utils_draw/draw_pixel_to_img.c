@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   background_fill.c                                  :+:      :+:    :+:   */
+/*   draw_pixel_to_img.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 08:55:49 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/11 13:38:06 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/03 13:54:44 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/03 14:06:57 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	background_fill(t_game *game, int color)
+void	draw_pixel_to_img(t_component *component, t_pixel pixel, int color)
 {
-	rect(game, set_pixel(0, 0), set_pixel(WIN_W, WIN_H), color);
-	return ;
+	if (pixel.x >= component->width || pixel.y >= component->height
+		|| pixel.x < 0 || pixel.y < 0)
+		return ;
+	component->mlx_data_addr[component->line_size /
+		(component->bpp / 8) * pixel.y + pixel.x] = color;
 }

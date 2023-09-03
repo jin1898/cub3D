@@ -6,13 +6,13 @@
 #    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/01 18:49:54 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/03 15:27:07 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -g3 #-Werror -fsanitize=address
+CFLAGS			=	#-Wall -Wextra -g3 #-Werror -fsanitize=address
 HEADER			=	./includes/cub3d.h
 
 SRCS			=	srcs/main.c									\
@@ -24,7 +24,8 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\
-					srcs/play/reset_mini_map.c						\
+					srcs/render/render_mini_map.c				\
+					srcs/render/render_game_scene.c				\
 					srcs/utils/rgb8_to_int.c					\
 					srcs/utils/set_pixel.c						\
 					srcs/utils/exit_game.c						\
@@ -33,9 +34,10 @@ SRCS			=	srcs/main.c									\
 					srcs/utils/destroy_instance.c				\
 					srcs/utils/key_press.c						\
 					srcs/utils/trash.c							\
-					srcs/utils_shape/rect.c						\
-					srcs/utils_shape/background_fill.c			\
-					srcs/utils_shape/line.c
+					srcs/utils_draw/draw_line_to_img.c			\
+					srcs/utils_draw/draw_pixel_to_img.c			\
+					srcs/utils_draw/draw_rect_to_img.c			\
+					
 OBJS			=	$(SRCS:.c=.o)
 
 LIBFT_A			=	srcs/libft/libft.a

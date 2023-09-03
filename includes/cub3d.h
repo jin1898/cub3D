@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 19:53:27 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/03 16:44:54 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_art
 	void	*east;
 }	t_art;
 
-typedef struct s_mini
+/* typedef struct s_mini
 {
 	void	*img;
 	size_t	size;
@@ -79,6 +79,25 @@ typedef struct s_mini
 	int		endian;
 }	t_mini;
 
+typedef struct s_screen
+{
+	void	*img;
+	int		*mlx_data_addr;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}	t_screen; */
+
+typedef struct s_component
+{
+	void	*img;
+	int		width;
+	int		height;
+	int		*mlx_data_addr;
+	int		bpp;
+	int		line_size;
+	int		endian;
+}	t_component;
 
 typedef struct s_game
 {
@@ -94,17 +113,17 @@ typedef struct s_game
 	char			**map;
 	size_t			map_y;
 	size_t			map_x;
+	int				mini_map_tile_scale;
 	int				fd;
 	char			*str;
 	size_t			line_count;
 	t_art			art;
-	t_mini			mini;
+	t_component		mini;
+	t_component		screen;
 	t_vector		player_pos;
 	t_vector		player_dir;
 	t_check_parse	check_parse;
 }	t_game;
-
-
 
 /* srcs/utils/ */
 t_pixel		set_pixel(int x, int y);
@@ -114,11 +133,6 @@ void		free_split(char	**to_free);
 void		free_game(t_game *game);
 int			destroy_instance(t_game *game);
 int			key_press(int keycode, t_game *game);
-
-/* srcs/utils_shape/ */
-void		background_fill(t_game *game, int color);
-void		rect(t_game *game, t_pixel first, t_pixel second, int color);
-void		line(t_game *game, t_pixel first, t_pixel second, int color);
 
 /* srcs/init/ */
 int			init_cub3d(t_game *game, int argc, char **argv);
@@ -130,8 +144,17 @@ int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
 int			map_validation(t_game *game);
 
-/* srcs/play/ */
-int			reset_mini_map(t_game *game);
+/* srcs/render/ */
+int			render_mini_map(t_game *game);
+int			render_game_scene(t_game *game);
+
+/* srcs/utils_draw */
+void		draw_pixel_to_img(t_component *component,
+				t_pixel pixel, int color);
+void		draw_line_to_img(t_component *component,
+				t_pixel first, t_pixel second, int color);
+void		draw_rect_to_img(t_component *component,
+				t_pixel first, t_pixel second, int color);
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);
