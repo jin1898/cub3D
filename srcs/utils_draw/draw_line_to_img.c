@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   draw_line_to_img.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 09:04:53 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/08/11 13:38:10 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/03 13:48:52 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/03 14:04:52 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	init_diff(t_pixel first, t_pixel second, t_vector *diff)
 	return (diff->x + diff->y);
 }
 
-void	line(t_game *game, t_pixel first, t_pixel second, int color)
+void	draw_line_to_img(t_component *component,
+	t_pixel first, t_pixel second, int color)
 {
 	t_vector	step;
 	t_vector	diff;
@@ -42,7 +43,7 @@ void	line(t_game *game, t_pixel first, t_pixel second, int color)
 	init_step(first, second, &step);
 	while (1)
 	{
-		mlx_pixel_put(game->mlx, game->win, first.x, first.y, color);
+		draw_pixel_to_img(component, first, color);
 		if (first.x == second.x && first.y == second.y)
 			break ;
 		e2 = 2 * err;
