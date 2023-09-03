@@ -6,13 +6,13 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:10:15 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 15:22:35 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/03 18:02:03 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	render_game_scene(t_game *game)
+void	render_game_scene(t_game *game)
 {
-	return (SUCCESS);
+	return ;
 }
