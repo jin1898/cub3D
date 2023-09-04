@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 18:09:05 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:23:39 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,12 @@ void		draw_line_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
 void		draw_rect_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
+
+/* srcs/utils_math */
+double		deg_to_rad(double degree);
+t_vector	add_vector(t_vector vector1, t_vector vector2);
+t_vector	substract_vector(t_vector vector1, t_vector vector2);
+t_vector	rotate_vector(t_vector vector, double degree);
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);
