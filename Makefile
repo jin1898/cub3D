@@ -6,7 +6,7 @@
 #    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/03 15:27:07 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/05 20:38:50 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,24 @@ SRCS			=	srcs/main.c									\
 					srcs/render/render_game_scene.c				\
 					srcs/utils/rgb8_to_int.c					\
 					srcs/utils/set_pixel.c						\
+					srcs/utils/set_vector.c						\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
 					srcs/utils/destroy_instance.c				\
 					srcs/utils/key_press.c						\
+					srcs/utils/key_release.c					\
+					srcs/utils/mouse_move.c						\
+					srcs/utils/loop.c							\
 					srcs/utils/trash.c							\
 					srcs/utils_draw/draw_line_to_img.c			\
 					srcs/utils_draw/draw_pixel_to_img.c			\
 					srcs/utils_draw/draw_rect_to_img.c			\
+					srcs/utils_math/add_vector.c				\
+					srcs/utils_math/deg_to_rad.c				\
+					srcs/utils_math/rotate_vector.c				\
+					srcs/utils_math/substract_vector.c			\
+					
 					
 OBJS			=	$(SRCS:.c=.o)
 

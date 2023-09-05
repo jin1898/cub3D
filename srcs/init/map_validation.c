@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 17:04:17 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:58:28 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	check_map(char **map, size_t x, size_t y)
 	if (map[y][x] == '3')	//공백을 만나 0 return
 		return (0);
 	map[y][x] = 'x';	//이미 방문한 곳은 x로 체크
-	printf("[%zd %zd], %c\n",y,x,map[y][x]);
-	ft_print_dfs_CurrentSituation(map); // 지워야함
+	//printf("[%zd %zd], %c\n",y,x,map[y][x]);
+	//ft_print_dfs_CurrentSituation(map); // 지워야함
 	/* 0을 만나 함수를 재귀 호출 */
 	i = -1;
 	while (++i < 4)
@@ -89,7 +89,7 @@ char	**init_map(char **map, t_game *game)
 			test_map[y][x] = '3';	//공백으로 채움
 	}
 	printf("test_map\n");
-	ft_print_dfs_CurrentSituation(test_map);
+	//ft_print_dfs_CurrentSituation(test_map);
 	/* 테두리는 공백으로 남겨두고, (1, 1)부터 map데이터를 채움 */
 	y = -1;
 	while (map[++y])
@@ -99,7 +99,7 @@ char	**init_map(char **map, t_game *game)
 			test_map[y + 1][x + 1] = map[y][x];
 	}
 	printf("\n\ntest_map fill complete\n");
-	ft_print_dfs_CurrentSituation(test_map);
+	//ft_print_dfs_CurrentSituation(test_map);
 	return (test_map);
 }
 
@@ -138,16 +138,24 @@ static int	_is_surround(char **map, t_game *game)
 
 static void	_set_player(int x, int y, char dir, t_game *game)
 {//문제발생 N S W는 있는데 E는??
-	game->player_pos.x = x;
-	game->player_pos.y = y;
+	game->player.x = x;
+	game->player.y = y;
 	if (dir == 'N')
-		game->player_dir.y = -1;
+		game->view_angle.y = -1;
 	else if (dir == 'S')
-		game->player_dir.y = 1;
+		game->view_angle.y = 1;
 	else if (dir == 'W')
-		game->player_dir.x = -1;
+		game->view_angle.x = -1;
 	else
-		game->player_dir.x = 1;
+		game->view_angle.x = 1;
+	if (dir == 'N')
+		game->plane_angle.x = 1;
+	else if (dir == 'S')
+		game->plane_angle.x = -1;
+	else if (dir == 'W')
+		game->plane_angle.y = -1;
+	else
+		game->plane_angle.y = 1;
 }//시야방향과 현재 좌표 저장하는부분
 
 

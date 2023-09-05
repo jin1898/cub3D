@@ -6,13 +6,13 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:48:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 17:51:56 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:47:33 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	init_step(t_pixel first, t_pixel second, t_vector *step)
+static void init_step(t_pixel first, t_pixel second, t_vector *step)
 {
 	if (first.x < second.x)
 		step->x = 1;
@@ -21,7 +21,7 @@ static void	init_step(t_pixel first, t_pixel second, t_vector *step)
 	if (first.y < second.y)
 		step->y = 1;
 	else
-		step->x = -1;
+		step->y = -1;  // 수정된 부분
 }
 
 static int	init_diff(t_pixel first, t_pixel second, t_vector *diff)

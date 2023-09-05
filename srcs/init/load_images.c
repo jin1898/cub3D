@@ -6,21 +6,21 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:41:46 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/03 18:07:26 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:13:03 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	_load_game_scene_image(t_game *game, t_component *screen)
+static void	_load_game_scene_image(t_game *game, t_component *scene)
 {
-	screen->width = WIN_W;
-	screen->height = WIN_H;
-	screen->img = mlx_new_image(game->mlx, WIN_W, WIN_H); //창이 아니라 이미지 만듬.
-	if (screen->img == NULL)
+	scene->width = WIN_W;
+	scene->height = WIN_H;
+	scene->img = mlx_new_image(game->mlx, WIN_W, WIN_H); //창이 아니라 이미지 만듬.
+	if (scene->img == NULL)
 		return ;
-	screen->mlx_data_addr = (int *)mlx_get_data_addr(screen->img,
-			&screen->bpp, &screen->line_size, &screen->endian);
+	scene->mlx_data_addr = (int *)mlx_get_data_addr(scene->img, &scene->bpp,
+		&scene->line_size, &scene->endian);
 }
 
 static void	_reset_mini_map_tile_size(t_game *game)//미니맵을 그릴때 가로가 큰지 세로가 큰지 판별후 해당 길이를 미니맵사이즈로 나눠 한타일의 크기를 알아내고 리턴
@@ -65,10 +65,10 @@ int	load_images(t_game *game)
 	game->art.east = mlx_xpm_file_to_image(game->mlx,
 			game->east_path, &x, &y);
 	_load_mini_map_image(game, &game->mini); // 미니맵 이미지(mimimap) 만드는 함수
-	_load_game_scene_image(game, &game->screen);// 3D 이미지(game scene) 만드는 함수
+	_load_game_scene_image(game, &game->scene);// 3D 이미지(game scene) 만드는 함수
 	if (game->art.north == NULL || game->art.south == NULL
 		|| game->art.west == NULL || game->art.west == NULL
-		|| game->mini.img == NULL || game->screen.img == NULL)
+		|| game->mini.img == NULL || game->scene.img == NULL)
 		return (FAILURE);
 	return (SUCCESS);
 }
