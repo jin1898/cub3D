@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/04 11:23:39 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/05 19:55:37 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,17 @@
 # define WIN_H 1080
 
 # define X_EVENT_KEY_PRESS 2
+# define X_EVENT_KEY_RELEASE 3
+# define X_EVENT_MOTION_NOTIFY 6
 # define X_EVENT_DESTROY 17
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_ESC 53
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define UNIT_DEGREE 3
 
 # define TRUE 1
 # define FALSE 0
@@ -79,6 +84,17 @@ typedef struct s_component
 	int		endian;
 }	t_component;
 
+typedef struct s_hook
+{
+	int		state_key_w;
+	int		state_key_a;
+	int		state_key_s;
+	int		state_key_d;
+	int		state_key_left;
+	int		state_key_right;
+	int		prev_mouse_x;
+}	t_hook;
+
 typedef struct s_game
 {
 	void			*mlx;
@@ -98,21 +114,27 @@ typedef struct s_game
 	char			*str;
 	size_t			line_count;
 	t_art			art;
+	t_hook			hook;
 	t_component		mini;
-	t_component		screen;
-	t_vector		player_pos;
-	t_vector		player_dir;
+	t_component		scene;
+	t_vector		player;
+	t_vector		view_angle;
+	t_vector		plane_angle;
 	t_check_parse	check_parse;
 }	t_game;
 
 /* srcs/utils/ */
 t_pixel		set_pixel(int x, int y);
+t_vector	set_vector(double x, double y);
 int			rgb8_to_int(int r, int g, int b);
 int			exit_game(t_game *game);
 void		free_split(char	**to_free);
 void		free_game(t_game *game);
 int			destroy_instance(t_game *game);
 int			key_press(int keycode, t_game *game);
+int			key_release(int keycode, t_game *game);
+int			mouse_move(int x, int y, t_game *game);
+int			loop(t_game *game);
 
 /* srcs/init/ */
 int			init_cub3d(t_game *game, int argc, char **argv);

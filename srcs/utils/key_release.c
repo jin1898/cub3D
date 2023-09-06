@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_pixel_to_img.c                                :+:      :+:    :+:   */
+/*   key_release.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 13:54:44 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/05 15:08:54 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/05 16:47:01 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/05 19:00:45 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	draw_pixel_to_img(t_component *component, t_pixel pixel, int color)
-{ //component의 이미지에서 pixel 위치에 color 를 점찍음 
-	if (pixel.x >= component->width || pixel.y >= component->height
-		|| pixel.x < 0 || pixel.y < 0) // 세그폴트 방지
-		return ;
-	component->mlx_data_addr[component->line_size /
-		(component->bpp / 8) * pixel.y + pixel.x] = color; // 색칠하기
+int	key_release(int keycode, t_game *game)
+{
+	if (keycode == KEY_A)
+		game->hook.state_key_a = FALSE;
+	else if (keycode == KEY_W)
+		game->hook.state_key_w = FALSE;
+	else if (keycode == KEY_D)
+		game->hook.state_key_d = FALSE;
+	else if (keycode == KEY_S)
+		game->hook.state_key_s = FALSE;
+	else if (keycode == KEY_RIGHT)
+		game->hook.state_key_right = FALSE;
+	else if (keycode == KEY_LEFT)
+		game->hook.state_key_left = FALSE;
+	return (0);
 }
