@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reset_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:18:09 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 17:44:47 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:55:30 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	_multiple_key(t_game *game, t_hook hook, char **map)
 }
 
 static int	_count_key_press(t_hook hook)
-{//
+{
 	int	res;
 
 	res = 0;

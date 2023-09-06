@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/06 14:49:00 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/06 17:59:40 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,27 +25,29 @@ SRCS			=	srcs/main.c									\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
+					srcs/loop/key_press.c						\
+					srcs/loop/key_release.c						\
+					srcs/loop/mouse_move.c						\
+					srcs/loop/loop_hook.c						\
+					srcs/loop/reset_vector.c					\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
-					srcs/utils/rgb8_to_int.c					\
-					srcs/utils/set_pixel.c						\
-					srcs/utils/set_vector.c						\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
 					srcs/utils/destroy_instance.c				\
-					srcs/utils/key_press.c						\
-					srcs/utils/key_release.c					\
-					srcs/utils/mouse_move.c						\
-					srcs/utils/loop.c							\
 					srcs/utils/trash.c							\
 					srcs/utils_draw/draw_line_to_img.c			\
 					srcs/utils_draw/draw_pixel_to_img.c			\
 					srcs/utils_draw/draw_rect_to_img.c			\
+					srcs/utils_draw/set_pixel.c					\
+					srcs/utils_draw/rgb8_to_int.c				\
 					srcs/utils_math/add_vector.c				\
 					srcs/utils_math/deg_to_rad.c				\
 					srcs/utils_math/rotate_vector.c				\
 					srcs/utils_math/substract_vector.c			\
+					srcs/utils_math/set_vector.c				\
+					srcs/utils_math/move_vector.c				\
 
 
 OBJS			=	$(SRCS:.c=.o)

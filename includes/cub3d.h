@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:12:06 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/06 17:59:31 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define FALSE 0
 # define SUCCESS 0
 # define FAILURE 1
+
+# define UNIT_DEGREE 3
+# define DISTANCE_UNIT 0.05
 
 typedef struct s_pixel
 {
@@ -124,17 +127,14 @@ typedef struct s_game
 }	t_game;
 
 /* srcs/utils/ */
-t_pixel		set_pixel(int x, int y);
-t_vector	set_vector(double x, double y);
-int			rgb8_to_int(int r, int g, int b);
+
+
+
 int			exit_game(t_game *game);
 void		free_split(char	**to_free);
 void		free_game(t_game *game);
 int			destroy_instance(t_game *game);
-int			key_press(int keycode, t_game *game);
-int			key_release(int keycode, t_game *game);
-int			mouse_move(int x, int y, t_game *game);
-int			loop(t_game *game);
+
 
 /* srcs/init/ */
 int			init_cub3d(t_game *game, int argc, char **argv);
@@ -150,6 +150,13 @@ int			map_validation(t_game *game);
 void		render_mini_map(t_game *game);
 void		render_game_scene(t_game *game);
 
+/* srcs/loop/ */
+int			key_press(int keycode, t_game *game);
+int			key_release(int keycode, t_game *game);
+int			mouse_move(int x, int y, t_game *game);
+int			loop_hook(t_game *game);
+void		reset_vector(t_game *game, t_hook hook, char **map);
+
 /* srcs/utils_draw */
 void		draw_pixel_to_img(t_component *component,
 				t_pixel pixel, int color);
@@ -157,12 +164,16 @@ void		draw_line_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
 void		draw_rect_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
+int			rgb8_to_int(int r, int g, int b);
+t_pixel		set_pixel(int x, int y);
 
 /* srcs/utils_math */
 double		deg_to_rad(double degree);
 t_vector	add_vector(t_vector vector1, t_vector vector2);
 t_vector	substract_vector(t_vector vector1, t_vector vector2);
 t_vector	rotate_vector(t_vector vector, double degree);
+t_vector	set_vector(double x, double y);
+t_vector	move_vector(t_vector pos, t_vector dir, double distance);
 
 /* map_validation_dfs.c */
 char		**init_map(char **map, t_game *game);
@@ -170,6 +181,7 @@ int			check_map_four_directions(char **map, size_t x, size_t y);
 int			find_longest_x(char **map);
 void		copy_map(char **map, char **test_map);
 int			is_surround(char **map, t_game *game);
+
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);
 
