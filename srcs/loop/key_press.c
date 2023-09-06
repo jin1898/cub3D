@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:43:49 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/05 19:29:58 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:43:48 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,3 @@ int	key_press(int keycode, t_game *game)
 		exit_game(game);
 	return (0);
 }
-
-
-/* game->view_angle = rotate_vector(game->view_angle, -10);
-		game->plane_angle = rotate_vector(game->view_angle, 90);
-		t_vector	plane_center = add_vector(game->player, game->view_angle);
-		draw_rect_to_img(
-			&game->scene,
-			set_pixel(0, 0),
-			set_pixel(WIN_W, WIN_H),
-			rgb8_to_int(0,0,0)
-		);
-		draw_line_to_img(
-			&game->scene, 
-			set_pixel(plane_center.x, plane_center.y),
-			set_pixel(game->player.x, game->player.y),
-			rgb8_to_int(255,255, 255)
-		);
-		mlx_put_image_to_window(game->mlx, game->win, game->scene.img, 0, 0); */

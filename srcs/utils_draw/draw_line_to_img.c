@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:48:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/05 16:47:33 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:41:57 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	init_diff(t_pixel first, t_pixel second, t_vector *diff)
 }
 
 void	draw_line_to_img(t_component *component, t_pixel first, t_pixel second, int color)
-{// DDA 알고리즘사용 브라함슨?을 이용하여 선을 만들었다. 안티엘런싱
+{
 	t_vector	step;//벡터 더블로 위치를 받음(부드럽게 나와야지 끊기면 안되니까.
 	t_vector	diff;
 	int			err;
