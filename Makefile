@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/05 20:38:50 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/06 14:49:00 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\
+					srcs/init/map_validation_dfs.c				\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
 					srcs/utils/rgb8_to_int.c					\
@@ -45,8 +46,8 @@ SRCS			=	srcs/main.c									\
 					srcs/utils_math/deg_to_rad.c				\
 					srcs/utils_math/rotate_vector.c				\
 					srcs/utils_math/substract_vector.c			\
-					
-					
+
+
 OBJS			=	$(SRCS:.c=.o)
 
 LIBFT_A			=	srcs/libft/libft.a

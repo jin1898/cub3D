@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/05 19:55:37 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:12:06 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_vector
 	double			y;
 }	t_vector;
 
-typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 변수 
+typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 변수
 {
 	size_t	north;
 	size_t	south;
@@ -62,7 +62,7 @@ typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 �
 	size_t	floor;
 	size_t	ceiling;
 	size_t	map;
-	size_t	diff; //맵이 여러개인지 확인하는 변수 
+	size_t	diff;
 }	t_check_parse;
 
 typedef struct s_art
@@ -164,7 +164,13 @@ t_vector	add_vector(t_vector vector1, t_vector vector2);
 t_vector	substract_vector(t_vector vector1, t_vector vector2);
 t_vector	rotate_vector(t_vector vector, double degree);
 
+/* map_validation_dfs.c */
+char		**init_map(char **map, t_game *game);
+int			check_map_four_directions(char **map, size_t x, size_t y);
+int			find_longest_x(char **map);
+void		copy_map(char **map, char **test_map);
+int			is_surround(char **map, t_game *game);
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);
 
-# endif
+#endif

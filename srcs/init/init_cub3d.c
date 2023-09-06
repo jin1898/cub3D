@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:01:59 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 13:21:05 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:13:09 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	check_name(char *str)
 		i++;
 	}
 	return (1);
-	//문제발생 파일명을 어디까지 허용할것인가? [ 파일명.cub / 파일명.cub.cub / .cub ]이런것들을 허용해도되는것인가?
 }
 
 int	init_cub3d(t_game *game, int argc, char **argv)
@@ -39,8 +38,8 @@ int	init_cub3d(t_game *game, int argc, char **argv)
 	if (init_cub3d_parse(game) == FAILURE)
 		return (FAILURE);
 	if (map_validation(game) == FAILURE)
-		return (FAILURE); //여기에 dfs bfs 검사하는부분
-	
+		return (FAILURE);
+
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WIN_W, WIN_H, "cub3D");
 	if (load_images(game) == FAILURE)
