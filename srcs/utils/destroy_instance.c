@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_game.c                                     :+:      :+:    :+:   */
+/*   destroy_instance.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:32:57 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 14:00:47 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:43:28 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,4 @@ int	destroy_instance(t_game *game)
 	if (game->mlx != NULL && game->win != NULL)
 		mlx_destroy_window(game->mlx, game->win);
 	return (SUCCESS);
-
-	//문제발생 만약 mlx_destroy_image 에서 game->mlx이 NULL일시 이미지를 파괴하지 못하는거신가? 오 근데 릭은안난다. 즉 괜찮은거겠지?
 }

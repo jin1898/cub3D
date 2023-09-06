@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/05 20:39:52 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:20:31 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	mlx_hook(game.win, X_EVENT_DESTROY, 0, exit_game, &game);
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, &game);
 	mlx_hook(game.win, X_EVENT_KEY_RELEASE, 0, key_release, &game);
-	mlx_loop_hook(game.mlx, loop, &game);
+	mlx_loop_hook(game.mlx, loop_hook, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

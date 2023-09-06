@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_game.c                                        :+:      :+:    :+:   */
+/*   loop_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/08 18:23:14 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 13:43:33 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/05 17:21:08 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/06 15:21:59 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	exit_game(t_game *game)
+int	loop_hook(t_game *game)
 {
-	destroy_instance(game);
-	free_game(game);
-	exit (0);
+	reset_vector(game, game->hook, game->map);
+	render_game_scene(game);
+	render_mini_map(game);
+	return (0);
 }
