@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:38:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/09/06 15:11:20 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/06 17:41:09 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ int	check_map_four_directions(char **map, size_t x, size_t y)
 	dir_x[1] = 0;
 	dir_x[2] = 1;
 	dir_x[3] = 0;
-
 	dir_y[0] = 0;
 	dir_y[1] = 1;
 	dir_y[2] = 0;
 	dir_y[3] = -1;
-
 	if (map[y][x] == '1' || map[y][x] == 'x')
 		return (1);
 	if (map[y][x] == '3')

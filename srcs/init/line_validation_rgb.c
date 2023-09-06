@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 16:24:14 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/06 17:38:34 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	_check_arguments(char **str)
 			return (FAILURE);
 		while (str[i1][i2])
 		{
-			if (_number_validation == FAILURE)
+			if (_number_validation (i1, i2, str) == FAILURE)
 				return (FAILURE);
 			i2++;
 		}
