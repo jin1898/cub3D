@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_texture.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 12:45:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 17:53:43 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/06 13:38:03 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	_count_arguments(char **str, size_t total)
 	while (str[i])
 		i++;
 	if (i == total)
-		return(SUCCESS);
-	return(FAILURE);
+		return (SUCCESS);
+	return (FAILURE);
 }
 
 int	line_validation_texture(t_game *game)
