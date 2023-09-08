@@ -2,9 +2,10 @@ F 20,20,20
 C 165,229,255
 
 EA ./textures/Blue_Nebula_03-1024x1024.xpm
-WE ./textures/Green_Nebula_05-1024x1024.xpm
-SO ./textures/Purple_Nebula_01-1024x1024-2.xpm
-NO ./textures/Starfield_06-1024x1024.xpm
+WE ./textures/Blue_Nebula_03-1024x1024.xpm
+SO ./textures/Blue_Nebula_03-1024x1024.xpm
+NO ./textures/Blue_Nebula_03-1024x1024.xpm
+
 
 11111111111111111111111111111111
 100000000000000N0000000000000001
