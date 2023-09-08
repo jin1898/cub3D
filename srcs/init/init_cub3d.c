@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:01:59 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:13:09 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/08 23:17:39 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	init_cub3d(t_game *game, int argc, char **argv)
 		return (FAILURE);
 	if (map_validation(game) == FAILURE)
 		return (FAILURE);
-
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WIN_W, WIN_H, "cub3D");
 	if (load_images(game) == FAILURE)

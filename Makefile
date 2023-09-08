@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/06 17:59:40 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/08 23:04:09 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	#-Wall -Wextra -g3 #-Werror -fsanitize=address
+CFLAGS			=	-Wall -Wextra -g #-Werror -fsanitize=address
 HEADER			=	./includes/cub3d.h
 
 SRCS			=	srcs/main.c									\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 14:08:44 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/08 23:17:36 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	aaa(void)
 {
-	system("leaks -q cub3D");
+	system("leaks --list -- cub3D");
 }
 
 int	main(int argc, char **argv)
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 		exit_game(&game);
 		return (EXIT_FAILURE);
 	}
-
 	mlx_mouse_move(game.win, WIN_W / 2, WIN_H / 2);
 	game.hook.prev_mouse_x = WIN_W / 2;
 	mlx_mouse_hide();

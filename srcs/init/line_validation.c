@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 12:21:14 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 16:25:50 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/08 20:24:10 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,25 @@ static int	_check_map_slice(char *str)
 	return (SUCCESS);
 }
 
+static int	_4way_image_check(t_game *game)
+{
+	if (game->check_parse.map != 0
+		|| line_validation_texture(game) == FAILURE)
+		return (FAILURE);
+	return (0);
+}
+
 int	line_validation(t_game *game)
 {
 	(game->line_count)++;
-	if (ft_strncmp(game->str, "", 1) == 0)//'\n'가 들어오면 ""문자열이 됨 즉 .cub에서 개행만 있을경우 체크 
+	if (ft_strncmp(game->str, "", 1) == 0)
 		;
 	else if (ft_strncmp(game->str, "NO ", 3) == 0
 		|| ft_strncmp(game->str, "SO ", 3) == 0
 		|| ft_strncmp(game->str, "WE ", 3) == 0
 		|| ft_strncmp(game->str, "EA ", 3) == 0)
 	{
-		if (game->check_parse.map != 0 || line_validation_texture(game) == FAILURE)
+		if (_4way_image_check(game) == FAILURE)
 			return (FAILURE);
 	}
 	else if (ft_strncmp(game->str, "F ", 2) == 0
