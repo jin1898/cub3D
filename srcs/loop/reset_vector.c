@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reset_vector.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:18:09 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 17:55:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 19:50:09 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 static int	_move_wall_collision(char **map,
 	t_game *game, t_vector pos, t_vector dir)
 {
-	t_vector	target;
-	int			x;
-	int			y;
+	t_vector	target_1;
 
-	target = move_vector(pos, dir, DISTANCE_UNIT);
-	x = (int)round(target.x);
-	y = (int)round(target.y);
-	if (map[y][x] == '1')
+	target_1 = move_vector(pos, dir, DISTANCE_UNIT);
+	if (map[(int)round(target_1.y)][(int)round(target_1.x)] == '1')
 		return (TRUE);
+	
+	if ((int)round(target_1.y) != (int)round(pos.y)
+		&& (int)round(target_1.x) != (int)round(pos.x))
+	{
+		if (map[(int)round(target_1.y)][(int)round(pos.x)] == '1'
+			&& map[(int)round(pos.y)][(int)round(target_1.x)] == '1')
+			return (TRUE);
+	}
 	return (FALSE);
 }
 
