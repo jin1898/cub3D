@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 19:52:56 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:36:11 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:12:42 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 // x = - 1
 int	mouse_move(int x, int y, t_game *game)
 {
-	printf("%d %d\n", x, y);
+	if (y < 0 || y > 1079)
+		mlx_mouse_move(game->win, x, WIN_H/2);
 	if (ft_abs(game->hook.prev_mouse_x - x)  >= (WIN_W/2))
 		game->view_angle = rotate_vector(game->view_angle, -(45 / (double)(WIN_W / 2)) * (ft_abs(game->hook.prev_mouse_x - x) - (WIN_W/2)));
 	else

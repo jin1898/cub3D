@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:57:54 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:26:56 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:44:03 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@ void	_render_wall(t_component *comp, int x, int y, double tile_size)
 	draw_rect_to_img(
 		comp,
 		set_pixel(
-			(x * tile_size),
-			(y * tile_size)),
+			round(x * tile_size),
+			round(y * tile_size)),
 		set_pixel(
-			(x * tile_size) + tile_size,
-			(y * tile_size) + tile_size),
+			round((x * tile_size) + tile_size),
+			round((y * tile_size) + tile_size)),
+		rgb8_to_int(43, 27, 97));
+	draw_rect_to_img(
+		comp,
+		set_pixel(
+			round(x * tile_size) + 3,
+			round(y * tile_size) + 3),
+		set_pixel(
+			round((x * tile_size) + tile_size) - 3,
+			round((y * tile_size) + tile_size) - 3),
 		rgb8_to_int(77, 45, 183));
 }
 // 벽 (1칸) 그리는 함수
