@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 17:38:34 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 20:24:48 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,15 @@ int	line_validation_rgb(t_game *game)
 	if (split_rgb == NULL)
 		return (FAILURE);
 	if (_count_arguments(split_rgb, 3) == FAILURE)
+	{
+		free_split(split_rgb);
 		return (FAILURE);
+	}
 	if (_get_rgb8(game, split_rgb) == FAILURE)
+	{
+		free_split(split_rgb);
 		return (FAILURE);
+	}
 	free_split(split_rgb);
 	return (SUCCESS);
 }

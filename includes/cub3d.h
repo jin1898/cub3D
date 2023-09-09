@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 17:59:31 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 19:59:45 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 �
 }	t_check_parse;
 
 typedef struct s_art
-{
+{//t_component로 바꿔야 이미지정보를 넣을수있다.
 	void	*north;
 	void	*south;
 	void	*west;
@@ -157,7 +157,7 @@ int			mouse_move(int x, int y, t_game *game);
 int			loop_hook(t_game *game);
 void		reset_vector(t_game *game, t_hook hook, char **map);
 
-/* srcs/utils_draw */
+/* srcs/utils_draw/ */
 void		draw_pixel_to_img(t_component *component,
 				t_pixel pixel, int color);
 void		draw_line_to_img(t_component *component,
@@ -167,7 +167,7 @@ void		draw_rect_to_img(t_component *component,
 int			rgb8_to_int(int r, int g, int b);
 t_pixel		set_pixel(int x, int y);
 
-/* srcs/utils_math */
+/* srcs/utils_math/ */
 double		deg_to_rad(double degree);
 t_vector	add_vector(t_vector vector1, t_vector vector2);
 t_vector	substract_vector(t_vector vector1, t_vector vector2);
@@ -181,6 +181,10 @@ int			check_map_four_directions(char **map, size_t x, size_t y);
 int			find_longest_x(char **map);
 void		copy_map(char **map, char **test_map);
 int			is_surround(char **map, t_game *game);
+//함수파일명_함수기능으로 이름적기
+//파일1개에는 1개의 함수만 호출되도록 만들기
+//srcs/init에 넣기
+//릭
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);

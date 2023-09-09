@@ -6,13 +6,13 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/06 17:59:40 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/09 18:17:38 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	#-Wall -Wextra -g3 #-Werror -fsanitize=address
+CFLAGS			=	-Wall -Wextra -g3 #-Werror -fsanitize=address
 HEADER			=	./includes/cub3d.h
 
 SRCS			=	srcs/main.c									\

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:12:22 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 19:44:46 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	_player_count(char **map, t_game *game)
 	x = 0;
 	y = 0;
 	res = 0;
-
 	while (map[y])
 	{
 		while (map[y][x])
