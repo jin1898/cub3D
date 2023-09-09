@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/09 18:17:38 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/09 21:13:33 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
+					srcs/init/map_validation_is_surround.c		\
 					srcs/loop/key_press.c						\
 					srcs/loop/key_release.c						\
 					srcs/loop/mouse_move.c						\

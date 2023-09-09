@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 19:59:45 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 21:09:51 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,9 @@ int			line_validation_rgb(t_game *game);
 int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
 int			map_validation(t_game *game);
+int			map_validation_is_surround(char **map, t_game *game);
+int			map_validation_dfs(size_t x, size_t y,
+				int *ismap_empty, char **test_map);
 
 /* srcs/render/ */
 void		render_mini_map(t_game *game);
@@ -176,11 +179,7 @@ t_vector	set_vector(double x, double y);
 t_vector	move_vector(t_vector pos, t_vector dir, double distance);
 
 /* map_validation_dfs.c */
-char		**init_map(char **map, t_game *game);
-int			check_map_four_directions(char **map, size_t x, size_t y);
-int			find_longest_x(char **map);
-void		copy_map(char **map, char **test_map);
-int			is_surround(char **map, t_game *game);
+
 //함수파일명_함수기능으로 이름적기
 //파일1개에는 1개의 함수만 호출되도록 만들기
 //srcs/init에 넣기

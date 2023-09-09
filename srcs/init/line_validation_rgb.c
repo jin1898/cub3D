@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 20:24:48 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/09 20:38:20 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,20 @@ static int	_get_rgb8(t_game *game, char **rgb)
 	}
 	return (SUCCESS);
 }
+static int	_check_do_split_rgb(char **split_rgb, t_game *game)
+{
+	if (_count_arguments(split_rgb, 3) == FAILURE)
+	{
+		free_split(split_rgb);
+		return (FAILURE);
+	}
+	if (_get_rgb8(game, split_rgb) == FAILURE)
+	{
+		free_split(split_rgb);
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
 
 int	line_validation_rgb(t_game *game)
 {
@@ -108,16 +122,8 @@ int	line_validation_rgb(t_game *game)
 	free_split(split);
 	if (split_rgb == NULL)
 		return (FAILURE);
-	if (_count_arguments(split_rgb, 3) == FAILURE)
-	{
-		free_split(split_rgb);
+	if (_check_do_split_rgb(split_rgb, game) == FAILURE)
 		return (FAILURE);
-	}
-	if (_get_rgb8(game, split_rgb) == FAILURE)
-	{
-		free_split(split_rgb);
-		return (FAILURE);
-	}
 	free_split(split_rgb);
 	return (SUCCESS);
 }
