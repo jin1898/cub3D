@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_rgb.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 20:38:20 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/10 17:33:52 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,70 +25,6 @@ static int	_count_arguments(char **str, size_t total)
 	return (FAILURE);
 }
 
-static int	_number_validation(size_t i1, size_t i2, char **str)
-{
-	if (i2 >= 3)
-	{
-		free_split(str);
-		return (FAILURE);
-	}
-	if (!(str[i1][i2] >= '0' && str[i1][i2] <= '9'))
-	{
-		free_split(str);
-		return (FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	_check_arguments(char **str)
-{
-	size_t	i1;
-	size_t	i2;
-	int		temp_num;
-
-	i1 = 0;
-	i2 = 0;
-	while (str[i1])
-	{
-		temp_num = ft_atoi(str[i1]);
-		if (temp_num > 255 || temp_num < 0)
-			return (FAILURE);
-		while (str[i1][i2])
-		{
-			if (_number_validation (i1, i2, str) == FAILURE)
-				return (FAILURE);
-			i2++;
-		}
-		i1++;
-		i2 = 0;
-	}
-	return (SUCCESS);
-}
-
-static int	_get_rgb8(t_game *game, char **rgb)
-{
-	if (ft_strncmp(game->str, "F ", 2) == 0)
-	{
-		if (_check_arguments(rgb) == FAILURE)
-			return (FAILURE);
-		game->floor_color = rgb8_to_int(
-				ft_atoi(rgb[0]),
-				ft_atoi(rgb[1]),
-				ft_atoi(rgb[2]));
-		(game->check_parse.floor)++;
-	}
-	else if (ft_strncmp(game->str, "C ", 2) == 0)
-	{
-		if (_check_arguments(rgb) == FAILURE)
-			return (FAILURE);
-		game->ceiling_color = rgb8_to_int(
-				ft_atoi(rgb[0]),
-				ft_atoi(rgb[1]),
-				ft_atoi(rgb[2]));
-		(game->check_parse.ceiling)++;
-	}
-	return (SUCCESS);
-}
 static int	_check_do_split_rgb(char **split_rgb, t_game *game)
 {
 	if (_count_arguments(split_rgb, 3) == FAILURE)
@@ -96,7 +32,7 @@ static int	_check_do_split_rgb(char **split_rgb, t_game *game)
 		free_split(split_rgb);
 		return (FAILURE);
 	}
-	if (_get_rgb8(game, split_rgb) == FAILURE)
+	if (line_validation_get_rgb8(game, split_rgb) == FAILURE)
 	{
 		free_split(split_rgb);
 		return (FAILURE);
@@ -127,4 +63,3 @@ int	line_validation_rgb(t_game *game)
 	free_split(split_rgb);
 	return (SUCCESS);
 }
-

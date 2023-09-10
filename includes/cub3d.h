@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 21:09:51 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/10 17:11:13 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,10 @@ typedef struct s_game
 }	t_game;
 
 /* srcs/utils/ */
-
-
-
 int			exit_game(t_game *game);
 void		free_split(char	**to_free);
 void		free_game(t_game *game);
 int			destroy_instance(t_game *game);
-
 
 /* srcs/init/ */
 int			init_cub3d(t_game *game, int argc, char **argv);
@@ -142,6 +138,7 @@ int			init_cub3d_parse(t_game *game);
 int			line_validation(t_game *game);
 int			line_validation_texture(t_game *game);
 int			line_validation_rgb(t_game *game);
+int			line_validation_get_rgb8(t_game *game, char **rgb);
 int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
 int			map_validation(t_game *game);

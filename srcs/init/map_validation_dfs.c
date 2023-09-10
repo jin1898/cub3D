@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_dfs.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:38:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/09/09 21:08:37 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/10 16:54:12 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ int *ismap_empty, char **test_map)
 	}
 	return (SUCCESS);
 }
-
