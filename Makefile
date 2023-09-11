@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/10 17:08:32 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/09/11 15:26:42 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation.c					\
 					srcs/init/line_validation_map.c				\
 					srcs/init/line_validation_rgb.c				\
-					srcs/init/line_validation_get_rgb8.c		\
+					srcs/init/line_validation_rgb_to_int.c		\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
 					srcs/init/map_validation.c					\

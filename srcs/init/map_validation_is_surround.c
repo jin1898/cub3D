@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:02:36 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/09/09 21:17:21 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/11 15:50:35 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ static char	**_init_map(char **map, t_game *game)
 int	map_validation_is_surround(char **map, t_game *game)
 {
 	char		**test_map;
-	int			ismap_empty;
+	int			is_map_empty;
 	size_t		x;
 	size_t		y;
 
-	ismap_empty = 0;
+	is_map_empty = 0;
 	y = -1;
 	test_map = _init_map(map, game);
 	while (test_map[++y])
@@ -110,16 +110,15 @@ int	map_validation_is_surround(char **map, t_game *game)
 		x = -1;
 		while (test_map[y][++x])
 		{
-			if (test_map[y][x] == '0')
-			{
-				if (map_validation_dfs(x, y, &ismap_empty, test_map)
+			if (test_map[y][x] == '0' || test_map[y][x] == 'N' || test_map[y][x]
+				== 'E' || test_map[y][x] == 'W' || test_map[y][x] == 'S')
+				if (map_validation_dfs(x, y, &is_map_empty, test_map)
 					== FAILURE)
 					return (FAILURE);
-			}
 		}
 	}
 	free_split(test_map);
-	if (ismap_empty == 0)
+	if (is_map_empty == 0)
 		return (FAILURE);
 	return (SUCCESS);
 }
