@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/13 10:08:54 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:52:08 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ double		distance_vector(t_vector v1, t_vector v2);
 
 
 /* srcs/utils_ray_casting/ */
-double		ray_casting(t_game *game, t_vector pos, t_vector dir, double degree);
+double		ray_casting(t_game *game, t_vector pos, t_vector dir, int *face);
 
 
 

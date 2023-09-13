@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:18:09 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 19:50:09 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:01:54 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static int	_move_wall_collision(char **map,
 	t_vector	target_1;
 
 	target_1 = move_vector(pos, dir, DISTANCE_UNIT);
-	if (map[(int)round(target_1.y)][(int)round(target_1.x)] == '1')
+	if (map[(int)target_1.y][(int)target_1.x] == '1')
 		return (TRUE);
 	
-	if ((int)round(target_1.y) != (int)round(pos.y)
-		&& (int)round(target_1.x) != (int)round(pos.x))
+	if ((int)target_1.y != (int)pos.y
+		&& (int)target_1.x != (int)pos.x)
 	{
-		if (map[(int)round(target_1.y)][(int)round(pos.x)] == '1'
-			&& map[(int)round(pos.y)][(int)round(target_1.x)] == '1')
+		if (map[(int)target_1.y][(int)pos.x] == '1'
+			&& map[(int)pos.y][(int)target_1.x] == '1')
 			return (TRUE);
 	}
 	return (FALSE);
