@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 13:17:39 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/13 10:08:54 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "mlx.h"
 # include "libft.h"
 
-# define WIN_W 1920
-# define WIN_H 1080
+# define WIN_W 1280
+# define WIN_H 720
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_RELEASE 3
@@ -174,8 +174,13 @@ t_vector	substract_vector(t_vector vector1, t_vector vector2);
 t_vector	rotate_vector(t_vector vector, double degree);
 t_vector	set_vector(double x, double y);
 t_vector	move_vector(t_vector pos, t_vector dir, double distance);
+double		distance_vector(t_vector v1, t_vector v2);
 
-/* map_validation_dfs.c */
+
+/* srcs/utils_ray_casting/ */
+double		ray_casting(t_game *game, t_vector pos, t_vector dir, double degree);
+
+
 
 //함수파일명_함수기능으로 이름적기
 //파일1개에는 1개의 함수만 호출되도록 만들기

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/11 15:26:42 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/12 15:48:51 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ SRCS			=	srcs/main.c									\
 					srcs/utils_math/substract_vector.c			\
 					srcs/utils_math/set_vector.c				\
 					srcs/utils_math/move_vector.c				\
+					srcs/utils_math/distance_vector.c			\
+					srcs/utils_ray_casting/ray_casting.c		\
 
 
 OBJS			=	$(SRCS:.c=.o)

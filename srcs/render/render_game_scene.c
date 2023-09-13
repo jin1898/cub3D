@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_scene.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:10:15 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 17:20:31 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:09:02 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,37 @@ void	_render_line(t_component *comp, double distance, int camera_x)
 	int	i;
 	int	size;
 	int	start_y;
+	int	end_y;
 
 	size = 1 / distance * (WIN_H);
 	start_y = (WIN_H/2) - (size/2);
-	draw_line_to_img(comp,
-		set_pixel(camera_x, start_y),
-		set_pixel(camera_x, start_y + size),
-		rgb8_to_int(255, 255, 255));
+	end_y = start_y + size;
+	for (;start_y < end_y; start_y++)
+	{
+		draw_pixel_to_img(comp, set_pixel(camera_x, start_y), rgb8_to_int(200, 200, 255));
+	}
 }
 
 void	render_game_scene(t_game *game)
 {
-	int	camera_x;
+	int		camera_x;
+	double	step_degree;
 
+	draw_rect_to_img(&game->scene, set_pixel(0, 0), set_pixel(WIN_W-1, WIN_H-1 / 2), game->ceiling_color);
+	draw_rect_to_img(&game->scene, set_pixel(0, WIN_H/2), set_pixel(WIN_W-1, WIN_H-1), game->floor_color);
+	
 	camera_x = 0;
+	step_degree = (double)90 / (double)WIN_W;
 	while (camera_x < WIN_W)
 	{
+		t_vector	ray = {game->view_angle.x + game->plane_angle.x *(2 * camera_x / (double)WIN_W - 1), game->view_angle.y + game->plane_angle.y *(2 * camera_x / (double)WIN_W - 1)};
 		_render_line(&game->scene,
-			ray_casting(game->map,
+			ray_casting(game,
 				game->player,
-				rotate_vector(game->view_angle, -60 + (camera_x * 120 / WIN_H))),
+				ray,
+				0),
 			camera_x);
-		camera_x++;
+		camera_x = camera_x + 1;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->scene.img,
 		0,0);
