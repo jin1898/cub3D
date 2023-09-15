@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/13 18:52:08 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/16 01:40:30 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@
 # define KEY_ESC 53
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
-# define UNIT_DEGREE 3
 
 # define TRUE 1
 # define FALSE 0
 # define SUCCESS 0
 # define FAILURE 1
 
-# define UNIT_DEGREE 3
+# define DEGREE_UNIT 3
 # define DISTANCE_UNIT 0.05
 
 typedef struct s_pixel
@@ -56,7 +55,7 @@ typedef struct s_vector
 	double			y;
 }	t_vector;
 
-typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 변수
+typedef struct s_check_parse
 {
 	size_t	north;
 	size_t	south;
@@ -67,14 +66,6 @@ typedef struct s_check_parse // .cub파씽이 잘들어오는지 확인하는 �
 	size_t	map;
 	size_t	diff;
 }	t_check_parse;
-
-typedef struct s_art
-{//t_component로 바꿔야 이미지정보를 넣을수있다.
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
-}	t_art;
 
 typedef struct s_component
 {
@@ -87,6 +78,14 @@ typedef struct s_component
 	int		endian;
 }	t_component;
 
+typedef struct s_art
+{
+	t_component		north;
+	t_component		south;
+	t_component		west;
+	t_component		east;
+}	t_art;
+
 typedef struct s_hook
 {
 	int		state_key_w;
@@ -96,7 +95,22 @@ typedef struct s_hook
 	int		state_key_left;
 	int		state_key_right;
 	int		prev_mouse_x;
+	int		loop_hook_term;
 }	t_hook;
+
+typedef struct s_ray
+{
+	t_vector	dir;
+	t_vector	step;
+	t_vector	delta;
+	t_vector	belong;
+	t_vector	side;
+	double		hit_point;
+	char		last_move;
+	char		face;
+	int			camera_x;
+}	t_ray;
+
 
 typedef struct s_game
 {
@@ -124,6 +138,7 @@ typedef struct s_game
 	t_vector		view_angle;
 	t_vector		plane_angle;
 	t_check_parse	check_parse;
+	t_ray			ray;
 }	t_game;
 
 /* srcs/utils/ */
@@ -141,6 +156,7 @@ int			line_validation_rgb(t_game *game);
 int			line_validation_get_rgb8(t_game *game, char **rgb);
 int			line_validation_map(t_game *game);
 int			load_images(t_game *game);
+void		load_images_texture(t_game *game, t_art *art);
 int			map_validation(t_game *game);
 int			map_validation_is_surround(char **map, t_game *game);
 int			map_validation_dfs(size_t x, size_t y,
@@ -149,6 +165,7 @@ int			map_validation_dfs(size_t x, size_t y,
 /* srcs/render/ */
 void		render_mini_map(t_game *game);
 void		render_game_scene(t_game *game);
+void		render_game_scene_line(t_game *game, double distance);
 
 /* srcs/loop/ */
 int			key_press(int keycode, t_game *game);
@@ -164,6 +181,8 @@ void		draw_line_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
 void		draw_rect_to_img(t_component *component,
 				t_pixel first, t_pixel second, int color);
+int			pipette_color_from_img(t_component *component,
+				t_pixel pixel);
 int			rgb8_to_int(int r, int g, int b);
 t_pixel		set_pixel(int x, int y);
 
@@ -175,17 +194,13 @@ t_vector	rotate_vector(t_vector vector, double degree);
 t_vector	set_vector(double x, double y);
 t_vector	move_vector(t_vector pos, t_vector dir, double distance);
 double		distance_vector(t_vector v1, t_vector v2);
-
+double		map_double(double num, double in_max, double out_max);
+int			map_int(int num, int in_max, int out_max);
 
 /* srcs/utils_ray_casting/ */
-double		ray_casting(t_game *game, t_vector pos, t_vector dir, int *face);
+double		ray_casting(t_game *game, t_ray *ray, t_vector pos, t_vector dir);
+void		init_ray_casting(t_ray *ray, t_vector pos, t_vector dir);
 
-
-
-//함수파일명_함수기능으로 이름적기
-//파일1개에는 1개의 함수만 호출되도록 만들기
-//srcs/init에 넣기
-//릭
 
 /*제출전 지워야하는 함수*/
 void		ft_print_dfs_CurrentSituation(char **map);

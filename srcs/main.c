@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/13 19:09:01 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/16 01:40:14 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		exit_game(&game);
 		return (EXIT_FAILURE);
 	}
-	//mlx_mouse_move(game.win, WIN_W / 2, WIN_H / 2);
+	mlx_mouse_move(game.win, WIN_W / 2, WIN_H / 2);
 	game.hook.prev_mouse_x = WIN_W / 2;
 	//mlx_mouse_hide();
 	mlx_hook(game.win, X_EVENT_MOTION_NOTIFY, 0, mouse_move, &game);

@@ -6,7 +6,7 @@
 #    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/12 15:48:51 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/16 00:03:46 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_rgb_to_int.c		\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
+					srcs/init/load_images_texture.c				\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
 					srcs/init/map_validation_is_surround.c		\
@@ -34,14 +35,15 @@ SRCS			=	srcs/main.c									\
 					srcs/loop/reset_vector.c					\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
+					srcs/render/render_game_scene_line.c		\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
 					srcs/utils/destroy_instance.c				\
-					srcs/utils/trash.c							\
 					srcs/utils_draw/draw_line_to_img.c			\
 					srcs/utils_draw/draw_pixel_to_img.c			\
 					srcs/utils_draw/draw_rect_to_img.c			\
+					srcs/utils_draw/pipette_color_from_img.c	\
 					srcs/utils_draw/set_pixel.c					\
 					srcs/utils_draw/rgb8_to_int.c				\
 					srcs/utils_math/add_vector.c				\
@@ -51,7 +53,10 @@ SRCS			=	srcs/main.c									\
 					srcs/utils_math/set_vector.c				\
 					srcs/utils_math/move_vector.c				\
 					srcs/utils_math/distance_vector.c			\
+					srcs/utils_math/map_int.c					\
+					srcs/utils_math/map_double.c				\
 					srcs/utils_ray_casting/ray_casting.c		\
+					srcs/utils_ray_casting/init_ray_casting.c	\
 
 
 OBJS			=	$(SRCS:.c=.o)

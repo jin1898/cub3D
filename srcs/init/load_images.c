@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:41:46 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 19:44:11 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:50:17 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	_load_game_scene_image(t_game *game, t_component *scene)
+static void	_load_images_game_scene(t_game *game, t_component *scene)
 {
 	scene->width = WIN_W;
 	scene->height = WIN_H;
@@ -39,7 +39,7 @@ static void	_reset_mini_map_tile_size(t_game *game)
 	game->mini_map_tile_size = game->mini.width / game->mini_map_tile_size;
 }
 
-static void	_load_mini_map_image(t_game *game, t_component *mini)
+static void	_load_images_mini_map(t_game *game, t_component *mini)
 {
 	mini->width = WIN_W / 6.4;
 	mini->height = mini->width;
@@ -53,21 +53,11 @@ static void	_load_mini_map_image(t_game *game, t_component *mini)
 
 int	load_images(t_game *game)
 {
-	int	x;
-	int	y;
-
-	game->art.north = mlx_xpm_file_to_image(game->mlx,
-			game->north_path, &x, &y);
-	game->art.south = mlx_xpm_file_to_image(game->mlx,
-			game->south_path, &x, &y);
-	game->art.west = mlx_xpm_file_to_image(game->mlx,
-			game->west_path, &x, &y);
-	game->art.east = mlx_xpm_file_to_image(game->mlx,
-			game->east_path, &x, &y);
-	_load_mini_map_image(game, &game->mini);
-	_load_game_scene_image(game, &game->scene);
-	if (game->art.north == NULL || game->art.south == NULL
-		|| game->art.west == NULL || game->art.west == NULL
+	load_images_texture(game, &game->art);
+	_load_images_mini_map(game, &game->mini);
+	_load_images_game_scene(game, &game->scene);
+	if (game->art.north.img == NULL || game->art.south.img == NULL
+		|| game->art.west.img == NULL || game->art.west.img == NULL
 		|| game->mini.img == NULL || game->scene.img == NULL)
 		return (FAILURE);
 	return (SUCCESS);
