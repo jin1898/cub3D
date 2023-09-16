@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_scene.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:10:15 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/16 00:07:07 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:01:39 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ void	render_game_scene(t_game *game)
 			ray_casting(game, &game->ray, game->player, game->ray.dir));
 		game->ray.camera_x++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, game->scene.img, 0, 0);
 }

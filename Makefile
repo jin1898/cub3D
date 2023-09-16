@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/16 00:03:46 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/16 18:43:32 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -g3 #-Werror -fsanitize=address
-HEADER			=	./includes/cub3d.h
+HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
 					srcs/init/init_cub3d.c						\
@@ -36,6 +36,8 @@ SRCS			=	srcs/main.c									\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
 					srcs/render/render_game_scene_line.c		\
+					srcs/render/render_game_scene_line_wall.c	\
+					srcs/render/render_cross_hair.c				\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
@@ -68,18 +70,22 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
+	$(MAKE) -C srcs/mlx
+	mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 clean :
 	$(MAKE) -C srcs/libft clean
-	rm -rf $(OBJS)
+	$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) 
 
 fclean :
 	$(MAKE) -C srcs/libft fclean
-	rm -rf $(OBJS) $(NAME)
+	$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) $(NAME) ./libmlx.dylib
 
 re :
 	$(MAKE) fclean

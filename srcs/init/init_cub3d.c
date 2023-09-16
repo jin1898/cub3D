@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:01:59 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 15:37:37 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/16 18:51:44 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int	init_cub3d(t_game *game, int argc, char **argv)
 		return (FAILURE);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, WIN_W, WIN_H, "cub3D");
+	int x, y;
+	game->abc = mlx_png_file_to_image(game->mlx, "./hand2.png", &x, &y);
+	if (game->abc == NULL)
+		printf("123\n");
 	if (load_images(game) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

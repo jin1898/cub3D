@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_scene_line.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 23:35:26 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/16 02:08:25 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:03:34 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,6 @@ static void	_render_line_floor(t_game *game, int end_y)
 		i++;
 	}
 }
-
-static void	_render_line_wall(t_game *game, t_ray *ray, int size, int start_y)
-{
-	int	i;
-	int	texture_x;
-
-	i = 0;
-	texture_x = (int)map_double(ray->hit_point, 1, 1024);
-	while (i < size)
-	{
-		draw_pixel_to_img(
-			&game->scene,
-			set_pixel(ray->camera_x, start_y + i),
-			pipette_color_from_img(
-				&game->art.north,
-				set_pixel(texture_x, map_int(i, size, 1024))));
-		i++;
-	}
-}
-
 static void	_render_line(t_game *game, double distance)
 {
 	int	size;
@@ -74,7 +54,7 @@ static void	_render_line(t_game *game, double distance)
 	if (end_y >= WIN_H)
 		end_y = WIN_H - 1;
 	_render_line_ceiling(game, start_y);
-	_render_line_wall(game, &game->ray, size, start_y);
+	render_game_scene_line_wall(game, &game->ray, size, start_y);
 	_render_line_floor(game, end_y);
 }
 

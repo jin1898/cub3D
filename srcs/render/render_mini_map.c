@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:57:54 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/09 19:44:03 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:01:28 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ void	render_mini_map(t_game *game)
 	}
 	_render_player(game, game->player.x, game->player.y,
 		game->mini_map_tile_size);
-	mlx_put_image_to_window(game->mlx, game->win, game->mini.img,
-		WIN_W - game->mini.width - 20, WIN_H - game->mini.height - 20);
 }
 //미니맵을 mlx 이미지 인스턴스에 그리는 함수
 // rgb(77, 45, 183) 배경색
