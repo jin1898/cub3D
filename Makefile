@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/16 18:43:32 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/18 16:33:01 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	$(MAKE) -C srcs/mlx
-	mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
+	#$(MAKE) -C srcs/mlx
+	#mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
 
 %.o: %.c
@@ -79,13 +79,13 @@ $(NAME) : $(OBJS) $(HEADER)
 
 clean :
 	$(MAKE) -C srcs/libft clean
-	$(MAKE) -C srcs/mlx clean
+	#$(MAKE) -C srcs/mlx clean
 	rm -rf $(OBJS) 
 
 fclean :
 	$(MAKE) -C srcs/libft fclean
-	$(MAKE) -C srcs/mlx clean
-	rm -rf $(OBJS) $(NAME) ./libmlx.dylib
+	#$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) $(NAME) #./libmlx.dylib
 
 re :
 	$(MAKE) fclean

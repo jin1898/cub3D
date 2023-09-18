@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:21 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/16 19:01:07 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:05:21 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	aaa(void)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-		
+	
 	atexit(aaa);
 	if (init_cub3d(&game, argc, argv) == FAILURE)
 	{
@@ -28,8 +28,6 @@ int	main(int argc, char **argv)
 		exit_game(&game);
 		return (EXIT_FAILURE);
 	}
-
-
 	mlx_mouse_move(game.win, WIN_W / 2, WIN_H / 2);
 	game.hook.prev_mouse_x = WIN_W / 2;
 	mlx_mouse_hide();
@@ -41,11 +39,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 	return (0);
 }
-
-
-/* 파씽 검사 받아봄
-1.2000을 넣는순간 릭발생
-2. 좌표사이에 띄어쓰가있어도 돌아가야한다?
-3. 맵이 섬으로 옆에 아래 있어도 되야한다?(단 줄기준으로 띄어있음  안됨)
-4. 맵이외의 요소들이 멘데토리 기준 그대로 나오지 않으면 안된다?
-*/

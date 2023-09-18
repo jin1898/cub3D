@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/16 18:30:54 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:48:58 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ typedef struct s_game
 	char			*south_path;
 	char			*west_path;
 	char			*east_path;
-	void			*abc;
 	int				floor_color;
 	int				ceiling_color;
 	char			**map;
@@ -169,7 +168,7 @@ void		render_mini_map(t_game *game);
 void		render_game_scene(t_game *game);
 void		render_game_scene_line(t_game *game, double distance);
 void		render_game_scene_line_wall(t_game *game,
-				t_ray *ray, int size, int start_y);
+				t_ray *ray, double distance, int start_y);
 void		render_cross_hair(t_game *game);
 
 /* srcs/loop/ */
