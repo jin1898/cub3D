@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 15:43:49 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/18 21:49:12 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 03:11:15 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	key_press(int keycode, t_game *game)
 		game->hook.state_key_right = TRUE;
 	else if (keycode == KEY_LEFT)
 		game->hook.state_key_left = TRUE;
+	else if (keycode == KEY_R)
+		game->ammo_count = 9;
 	else if (keycode == KEY_ESC)
 		exit_game(game);
 	return (0);

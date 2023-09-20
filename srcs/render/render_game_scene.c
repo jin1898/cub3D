@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:10:15 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/18 22:14:38 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 02:54:04 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,8 @@ void	render_game_scene(t_game *game)
 			ray_casting(game, &game->ray, game->player, game->ray.dir));
 		game->ray.camera_x++;
 	}
+	render_cross_hair(game);
+	render_shoot(game);
+	render_ammo_count(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->scene.img, 0, 0);
 }

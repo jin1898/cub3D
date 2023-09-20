@@ -6,7 +6,7 @@
 #    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/20 16:13:40 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/21 03:24:47 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ SRCS			=	srcs/main.c									\
 					srcs/hook/key_press.c						\
 					srcs/hook/key_release.c						\
 					srcs/hook/mouse_move.c						\
+					srcs/hook/mouse_press.c						\
+					srcs/hook/mouse_release.c					\
 					srcs/hook/loop_hook.c						\
 					srcs/hook/reset_vector.c					\
 					srcs/render/render_mini_map.c				\
@@ -38,6 +40,9 @@ SRCS			=	srcs/main.c									\
 					srcs/render/render_game_scene_line.c		\
 					srcs/render/render_game_scene_line_wall.c	\
 					srcs/render/render_cross_hair.c				\
+					srcs/render/render_shoot.c					\
+					srcs/render/render_hand.c					\
+					srcs/render/render_ammo_count.c				\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\

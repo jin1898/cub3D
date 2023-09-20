@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   render_hand.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 17:21:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:31:57 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/20 23:37:56 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/21 03:20:09 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	_render_images(t_game *game)
+void	render_hand(t_game *game)
 {
-	render_game_scene(game);
-	render_mini_map(game);
-	render_hand(game);
-}
-
-int	loop_hook(t_game *game)
-{
-	
-	game->hook.loop_hook_term++;
-	if (game->hook.loop_hook_term == 30)
-	{
-		reset_vector(game, game->hook, game->map);
-		_render_images(game);
-		game->hook.loop_hook_term = 0;
-	}
-	return (0);
+	if (game->hook.state_mouse_left == TRUE)
+		mlx_put_image_to_window(game->mlx, game->win, game->art.hand_shoot.img,
+			WIN_W - 525, WIN_H - 300);
+	else
+		mlx_put_image_to_window(game->mlx, game->win, game->art.hand_idle.img,
+			WIN_W - 525, WIN_H - 300);	
 }

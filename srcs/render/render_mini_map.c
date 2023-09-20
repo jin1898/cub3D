@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:57:54 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/20 18:46:02 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 02:30:55 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,6 @@ void	render_mini_map(t_game *game)
 		game->player.x + game->mini_map_margin.x,
 		game->player.y + game->mini_map_margin.y,
 		game->mini_map_tile_size);
+	mlx_put_image_to_window(game->mlx, game->win, game->mini.img,
+		WIN_W - game->mini.width - 20, WIN_H - game->mini.height - 20);
 }

@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/20 18:51:53 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 03:10:53 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_R 15
 # define KEY_ESC 53
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 2
 
 # define TRUE 1
 # define FALSE 0
@@ -85,6 +88,9 @@ typedef struct s_art
 	t_component		south;
 	t_component		west;
 	t_component		east;
+	t_component		hand_idle;
+	t_component		hand_shoot;
+	t_component		ammo;
 }	t_art;
 
 typedef struct s_hook
@@ -95,6 +101,8 @@ typedef struct s_hook
 	int				state_key_d;
 	int				state_key_left;
 	int				state_key_right;
+	int				state_mouse_left;
+	int				state_mouse_right;
 	int				prev_mouse_x;
 	int				loop_hook_term;
 }	t_hook;
@@ -142,12 +150,15 @@ typedef struct s_game
 	t_vector		plane_angle;
 	t_check_parse	check_parse;
 	t_ray			ray;
+	int				ammo_count;
 }	t_game;
 
 /* srcs/hook/ */
 int			key_press(int keycode, t_game *game);
 int			key_release(int keycode, t_game *game);
 int			mouse_move(int x, int y, t_game *game);
+int			mouse_press(int keycode, int x, int y, t_game *game);
+int			mouse_release(int keycode, int x, int y, t_game *game);
 int			loop_hook(t_game *game);
 void		reset_vector(t_game *game, t_hook hook, char **map);
 
@@ -173,6 +184,9 @@ void		render_game_scene_line(t_game *game, double distance);
 void		render_game_scene_line_wall(t_game *game,
 				t_ray *ray, double distance, int start_y);
 void		render_cross_hair(t_game *game);
+void		render_shoot(t_game *game);
+void		render_hand(t_game *game);
+void		render_ammo_count(t_game *game);
 
 /* srcs/utils/ */
 int			exit_game(t_game *game);

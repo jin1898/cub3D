@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   mouse_release.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 17:21:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:31:57 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/21 00:02:50 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/21 03:17:28 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	_render_images(t_game *game)
+int	mouse_release(int keycode, int x, int y, t_game *game)
 {
-	render_game_scene(game);
-	render_mini_map(game);
-	render_hand(game);
-}
-
-int	loop_hook(t_game *game)
-{
-	
-	game->hook.loop_hook_term++;
-	if (game->hook.loop_hook_term == 30)
-	{
-		reset_vector(game, game->hook, game->map);
-		_render_images(game);
-		game->hook.loop_hook_term = 0;
-	}
+	(void)x;
+	(void)y;
+	(void)game;
+	(void)keycode;
 	return (0);
 }
