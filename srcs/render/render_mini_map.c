@@ -6,13 +6,13 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:57:54 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/18 22:59:28 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:46:02 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	_render_background(t_component *comp)
+static void	_render_background(t_component *comp)
 {
 	draw_rect_to_img(
 		comp,
@@ -25,9 +25,9 @@ void	_render_background(t_component *comp)
 		set_pixel(comp->width - 3, comp->height -3),
 		rgb8_to_int(97, 103, 122));
 }
-//배경색 칠하는 함수
 
-void	_render_wall(t_component *comp, int x, int y, double tile_size)
+static void	_render_wall(t_component *comp,
+	double x, double y, double tile_size)
 {
 	draw_rect_to_img(
 		comp,
@@ -48,13 +48,12 @@ void	_render_wall(t_component *comp, int x, int y, double tile_size)
 			round((y * tile_size) + tile_size) - 3),
 		rgb8_to_int(97, 103, 122));
 }
-// 벽 (1칸) 그리는 함수
 
-void	_render_player(t_game *game, double x, double y, double tile_size)
+static void	_render_player(t_game *game, double x, double y, double tile_size)
 {
 	t_vector	view_pos;
 
-	view_pos = add_vector(game->player, game->view_angle);
+	view_pos = add_vector(set_vector(x, y), game->view_angle);
 	draw_line_to_img(
 		&game->mini,
 		set_pixel(
@@ -74,7 +73,25 @@ void	_render_player(t_game *game, double x, double y, double tile_size)
 			(y * tile_size) + 2),
 		rgb8_to_int(216, 217, 218));
 }
-// 플레이어 그리는 함수
+
+static void	_get_mini_map_margin(t_game *game)
+{
+	if (game->map_y > game->map_x)
+	{
+		game->mini_map_margin.x = 0;
+		game->mini_map_margin.y = (double)(game->map_y - game->map_x) / 2.0;
+	}
+	else if (game->map_y < game->map_x)
+	{
+		game->mini_map_margin.x = (double)(game->map_x - game->map_y) / 2.0;
+		game->mini_map_margin.y = 0;
+	}
+	else
+	{
+		game->mini_map_margin.x = 0;
+		game->mini_map_margin.y = 0;
+	}
+}
 
 void	render_mini_map(t_game *game)
 {
@@ -83,18 +100,24 @@ void	render_mini_map(t_game *game)
 
 	x = 0;
 	y = 0;
+	_get_mini_map_margin(game);
 	_render_background(&game->mini);
 	while (game->map[y])
 	{
 		while (game->map[y][x])
 		{
 			if (game->map[y][x] == '1')
-				_render_wall(&game->mini, x, y, game->mini_map_tile_size);
+				_render_wall(&game->mini,
+					x + game->mini_map_margin.x,
+					y + game->mini_map_margin.y,
+					game->mini_map_tile_size);
 			x++;
 		}
 		y++;
 		x = 0;
 	}
-	_render_player(game, game->player.x, game->player.y,
+	_render_player(game,
+		game->player.x + game->mini_map_margin.x,
+		game->player.y + game->mini_map_margin.y,
 		game->mini_map_tile_size);
 }
