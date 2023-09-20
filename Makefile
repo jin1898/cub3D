@@ -6,13 +6,13 @@
 #    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/18 16:33:01 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/20 16:13:40 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -g3 #-Werror -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror
 HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
@@ -28,11 +28,11 @@ SRCS			=	srcs/main.c									\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
 					srcs/init/map_validation_is_surround.c		\
-					srcs/loop/key_press.c						\
-					srcs/loop/key_release.c						\
-					srcs/loop/mouse_move.c						\
-					srcs/loop/loop_hook.c						\
-					srcs/loop/reset_vector.c					\
+					srcs/hook/key_press.c						\
+					srcs/hook/key_release.c						\
+					srcs/hook/mouse_move.c						\
+					srcs/hook/loop_hook.c						\
+					srcs/hook/reset_vector.c					\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
 					srcs/render/render_game_scene_line.c		\
@@ -59,7 +59,6 @@ SRCS			=	srcs/main.c									\
 					srcs/utils_math/map_double.c				\
 					srcs/utils_ray_casting/ray_casting.c		\
 					srcs/utils_ray_casting/init_ray_casting.c	\
-
 
 OBJS			=	$(SRCS:.c=.o)
 

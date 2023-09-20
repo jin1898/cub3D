@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:41:46 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/15 17:50:17 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:43:51 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	load_images(t_game *game)
 	_load_images_mini_map(game, &game->mini);
 	_load_images_game_scene(game, &game->scene);
 	if (game->art.north.img == NULL || game->art.south.img == NULL
-		|| game->art.west.img == NULL || game->art.west.img == NULL
+		|| game->art.west.img == NULL || game->art.east.img == NULL
 		|| game->mini.img == NULL || game->scene.img == NULL)
 		return (FAILURE);
 	return (SUCCESS);

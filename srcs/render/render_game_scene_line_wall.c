@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:50:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/18 23:09:05 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:38:03 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,15 @@ static void	_wall_out_range(t_game *game, t_ray *ray, double distance)
 
 	i = 0;
 	normal_texture_start = distance
-		* ((double) -WIN_H / 2.0) + (double)WIN_H / 2.0;
+		* ((double)-WIN_H / 2.0) + (double)WIN_H / 2.0;
 	normal_texture_size = ((double)WIN_H / 2.0 - normal_texture_start) * 2.0;
 	normal_texture_end = normal_texture_start + normal_texture_size;
 	step = (normal_texture_end - normal_texture_start) / WIN_H;
 	while (i < WIN_H)
 	{
-		double j = step * i;
-		draw_pixel_to_img(
-			&game->scene,
-			set_pixel(
-				ray->camera_x,
-				i
-			),
-			_pipette_wall_by_face(game, normal_texture_start + j, WIN_H)
-		);
+		draw_pixel_to_img(&game->scene, set_pixel(ray->camera_x, i),
+			_pipette_wall_by_face(game,
+				normal_texture_start + step * i, WIN_H));
 		i++;
 	}
 }

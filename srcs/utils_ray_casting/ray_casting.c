@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/18 22:21:54 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:44:53 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static double	_hit_distace(t_ray *ray, t_vector pos, t_vector dir)
 		return (ray->side.y - ray->delta.y);
 	}
 	else
-		return (0);
+		return (1);
 }
 
 static int	_move_ray(t_ray *ray)
