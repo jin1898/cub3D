@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/11 15:26:42 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/09/21 03:24:47 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -g3 #-Werror -fsanitize=address
-HEADER			=	./includes/cub3d.h
+CFLAGS			=	-Wall -Wextra -Werror
+HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
 					srcs/init/init_cub3d.c						\
@@ -24,24 +24,33 @@ SRCS			=	srcs/main.c									\
 					srcs/init/line_validation_rgb_to_int.c		\
 					srcs/init/line_validation_texture.c			\
 					srcs/init/load_images.c						\
+					srcs/init/load_images_texture.c				\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
 					srcs/init/map_validation_is_surround.c		\
-					srcs/loop/key_press.c						\
-					srcs/loop/key_release.c						\
-					srcs/loop/mouse_move.c						\
-					srcs/loop/loop_hook.c						\
-					srcs/loop/reset_vector.c					\
+					srcs/hook/key_press.c						\
+					srcs/hook/key_release.c						\
+					srcs/hook/mouse_move.c						\
+					srcs/hook/mouse_press.c						\
+					srcs/hook/mouse_release.c					\
+					srcs/hook/loop_hook.c						\
+					srcs/hook/reset_vector.c					\
 					srcs/render/render_mini_map.c				\
 					srcs/render/render_game_scene.c				\
+					srcs/render/render_game_scene_line.c		\
+					srcs/render/render_game_scene_line_wall.c	\
+					srcs/render/render_cross_hair.c				\
+					srcs/render/render_shoot.c					\
+					srcs/render/render_hand.c					\
+					srcs/render/render_ammo_count.c				\
 					srcs/utils/exit_game.c						\
 					srcs/utils/free_split.c						\
 					srcs/utils/free_game.c						\
 					srcs/utils/destroy_instance.c				\
-					srcs/utils/trash.c							\
 					srcs/utils_draw/draw_line_to_img.c			\
 					srcs/utils_draw/draw_pixel_to_img.c			\
 					srcs/utils_draw/draw_rect_to_img.c			\
+					srcs/utils_draw/pipette_color_from_img.c	\
 					srcs/utils_draw/set_pixel.c					\
 					srcs/utils_draw/rgb8_to_int.c				\
 					srcs/utils_math/add_vector.c				\
@@ -50,7 +59,11 @@ SRCS			=	srcs/main.c									\
 					srcs/utils_math/substract_vector.c			\
 					srcs/utils_math/set_vector.c				\
 					srcs/utils_math/move_vector.c				\
-
+					srcs/utils_math/distance_vector.c			\
+					srcs/utils_math/map_int.c					\
+					srcs/utils_math/map_double.c				\
+					srcs/utils_ray_casting/ray_casting.c		\
+					srcs/utils_ray_casting/init_ray_casting.c	\
 
 OBJS			=	$(SRCS:.c=.o)
 
@@ -61,18 +74,22 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
+	#$(MAKE) -C srcs/mlx
+	#mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
+	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 clean :
 	$(MAKE) -C srcs/libft clean
-	rm -rf $(OBJS)
+	#$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) 
 
 fclean :
 	$(MAKE) -C srcs/libft fclean
-	rm -rf $(OBJS) $(NAME)
+	#$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) $(NAME) #./libmlx.dylib
 
 re :
 	$(MAKE) fclean

@@ -3,83 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:41:16 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 17:20:12 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:44:53 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static t_vector	_init_belong(t_vector pos)
+static double	_hit_distace(t_ray *ray, t_vector pos, t_vector dir)
 {
-	return (set_vector(round(pos.x), round(pos.y)));
+	if (ray->last_move == 'x')
+	{
+		ray->hit_point = pos.y + (ray->side.x - ray->delta.x) * dir.y;
+		ray->hit_point -= floor(ray->hit_point);
+		return (ray->side.x - ray->delta.x);
+	}
+	else if (ray->last_move == 'y')
+	{
+		ray->hit_point = pos.x + (ray->side.y - ray->delta.y) * dir.x;
+		ray->hit_point -= floor(ray->hit_point);
+		return (ray->side.y - ray->delta.y);
+	}
+	else
+		return (1);
 }
 
-static int	_is_wall_collision(t_vector photon, char **map)
+static int	_move_ray(t_ray *ray)
 {
-	if (photon.x - floor(photon.x) == 0.5)
+	if (ray->side.x < ray->side.y)
 	{
-		if (map[(int)round(photon.y)][(int)floor(photon.x)] == '1'
-			|| map[(int)round(photon.y)][(int)floor(photon.x) + 1] == '1')
-			return (TRUE);
+		ray->side.x += ray->delta.x;
+		ray->belong.x += ray->step.x;
+		ray->last_move = 'x';
 	}
-	if (photon.y - floor(photon.y) == 0.5)
+	else
 	{
-		if (map[(int)round(photon.y)][(int)floor(photon.x)] == '1'
-			|| map[(int)round(photon.y) + 1][(int)floor(photon.x)] == '1')
-			return (TRUE);
+		ray->side.y += ray->delta.y;
+		ray->belong.y += ray->step.y;
+		ray->last_move = 'y';
 	}
-	return (FALSE);
+	return (TRUE);
 }
 
-static void	_move_photon(t_vector *photon, t_vector *belong, t_vector dir)
+double	ray_casting(t_game *game, t_ray *ray, t_vector pos, t_vector dir)
 {
-	t_vector	move;
-
-	if (dir.x > 0)
-		move.x = (round(photon->x) + 0.5) - photon->x;
-	else if (dir.x < 0)
-		move.x = (round(photon->x) - 0.5) - photon->x;
-	move.y = dir.y / fabs(dir.x) * fabs(move.x);
-	if (photon->y + move.y > belong->y + 0.5 || photon->y + move.y < belong->y - 0.5)
-	{
-		if (dir.y > 0)
-			move.y = (round(photon->y) + 0.5) - photon->y;
-		else if (dir.y < 0)
-			move.y = (round(photon->y) - 0.5) - photon->y;
-		move.x = dir.x / fabs(dir.y) * fabs(move.y);
-	}
-	photon->x = photon->x + move.x;
-	photon->y = photon->y + move.y;
-	if (photon->x - belong->x == 0.5)
-		(belong->x)++;
-	else if (photon->x - belong->x == -0.5)
-		(belong->x)--;
-	else if (photon->y - belong->y == 0.5)
-		(belong->y)++;
-	else if (photon->y - belong->y == -0.5)
-		(belong->y)--;
-}
-
-double	ray_casting(char **map, t_vector pos, t_vector dir, double degree)
-{
-	int			is_hit;
-	t_vector	photon;
-	t_vector	belong;
-	double		res;
-
-	is_hit = FALSE;
-	photon = pos;
-	belong = _init_belong(pos);
-	while (is_hit == FALSE)
-	{
-		if (_is_wall_collision(photon, map) == TRUE)
-			is_hit == TRUE;
-		if (is_hit == FALSE)
-			_move_photon(&photon, &belong, dir);
-	}
-	res = _correct_distance(distance_vector(pos, photon), degree);
-	return (res);
+	init_ray_casting(ray, pos, dir);
+	while (_move_ray(ray))
+		if (game->map[(int)ray->belong.y][(int)ray->belong.x] == '1')
+			break ;
+	return (_hit_distace(ray, pos, dir));
 }

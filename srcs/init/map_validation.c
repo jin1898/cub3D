@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:43:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 15:38:03 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/18 23:10:09 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 static void	_set_player(int x, int y, char dir, t_game *game)
 {
-	game->player.x = x;
-	game->player.y = y;
+	game->player.x = x + 0.5;
+	game->player.y = y + 0.5;
 	if (dir == 'N')
 		game->view_angle.y = -1;
 	else if (dir == 'S')
-		game->view_angle.y = 1;
+		game->view_angle.y = 1.0001;
 	else if (dir == 'W')
 		game->view_angle.x = -1;
 	else
 		game->view_angle.x = 1;
-	if (dir == 'N')
-		game->plane_angle.x = 1;
-	else if (dir == 'S')
-		game->plane_angle.x = -1;
-	else if (dir == 'W')
-		game->plane_angle.y = -1;
-	else
-		game->plane_angle.y = 1;
+	game->plane_angle = rotate_vector(game->view_angle, 90);
 }
 
 static int	_player_count(char **map, t_game *game)

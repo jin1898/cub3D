@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop_hook.c                                        :+:      :+:    :+:   */
+/*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 17:21:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/06 15:21:59 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/05 19:52:56 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/20 16:01:41 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	loop_hook(t_game *game)
+int	mouse_move(int x, int y, t_game *game)
 {
-	reset_vector(game, game->hook, game->map);
-	render_game_scene(game);
-	render_mini_map(game);
-	return (0);
+	(void)y;
+	game->view_angle
+		= rotate_vector(game->view_angle, (x - (WIN_W / 2)) * MOUSE_SPEED);
+	game->plane_angle = rotate_vector(game->view_angle, 90);
+	mlx_mouse_move(game->win, WIN_W / 2, 226 - WIN_H / 2);
+	return (SUCCESS);
 }

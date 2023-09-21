@@ -3,44 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_scene.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 12:10:15 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/11 17:20:31 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 02:54:04 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	_render_line(t_component *comp, double distance, int camera_x)
-{
-	int	i;
-	int	size;
-	int	start_y;
-
-	size = 1 / distance * (WIN_H);
-	start_y = (WIN_H/2) - (size/2);
-	draw_line_to_img(comp,
-		set_pixel(camera_x, start_y),
-		set_pixel(camera_x, start_y + size),
-		rgb8_to_int(255, 255, 255));
-}
-
 void	render_game_scene(t_game *game)
 {
-	int	camera_x;
-
-	camera_x = 0;
-	while (camera_x < WIN_W)
+	game->ray.camera_x = 0;
+	while (game->ray.camera_x < WIN_W)
 	{
-		_render_line(&game->scene,
-			ray_casting(game->map,
-				game->player,
-				rotate_vector(game->view_angle, -60 + (camera_x * 120 / WIN_H))),
-			camera_x);
-		camera_x++;
+		game->ray.dir = set_vector(
+				game->view_angle.x + game->plane_angle.x / 9.0 * 8.0
+				*(2.0 * game->ray.camera_x / (double)WIN_W - 1.0),
+				game->view_angle.y + game->plane_angle.y / 9.0 * 8.0
+				* (2.0 * game->ray.camera_x / (double)WIN_W - 1.0));
+		render_game_scene_line(
+			game,
+			ray_casting(game, &game->ray, game->player, game->ray.dir));
+		game->ray.camera_x++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, game->scene.img,
-		0,0);
-	return ;
+	render_cross_hair(game);
+	render_shoot(game);
+	render_ammo_count(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->scene.img, 0, 0);
 }
