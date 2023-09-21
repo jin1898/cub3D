@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 17:17:34 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:43:35 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:50:22 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,18 @@ void	load_images_texture(t_game *game, t_art *art)
 	_xpm_file_to_component(game, &art->south, game->south_path);
 	_xpm_file_to_component(game, &art->west, game->west_path);
 	_xpm_file_to_component(game, &art->east, game->east_path);
-	_png_file_to_component(game, &art->hand_idle, "./srcs/const_texture/hand_idle.png");
-	_png_file_to_component(game, &art->hand_shoot, "./srcs/const_texture/hand_shoot.png");
-	_png_file_to_component(game, &art->ammo, "./srcs/const_texture/ammo_banana.png");
+	_png_file_to_component(game, &art->hand_idle,
+		"./srcs/const_texture/hand_idle.png");
+	_png_file_to_component(game, &art->hand_shoot,
+		"./srcs/const_texture/hand_shoot.png");
+	_png_file_to_component(game, &art->hand_reload_1,
+		"./srcs/const_texture/hand_reload_1.png");
+	_png_file_to_component(game, &art->hand_reload_2,
+		"./srcs/const_texture/hand_reload_2.png");
+	_png_file_to_component(game, &art->ammo,
+		"./srcs/const_texture/ammo_banana.png");
+	_png_file_to_component(game, &art->title_menu,
+		"./srcs/const_texture/title_menu.png");
+	_png_file_to_component(game, &art->mouse_cursor,
+		"./srcs/const_texture/banana_cursor.png");
 }

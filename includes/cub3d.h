@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 03:10:53 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:00:38 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define X_EVENT_KEY_RELEASE 3
 # define X_EVENT_MOTION_NOTIFY 6
 # define X_EVENT_DESTROY 17
+# define X_EVENT_MOUSE_PRESS 4
+# define X_EVENT_MOUSE_RELEASE 5
+
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
@@ -88,9 +91,13 @@ typedef struct s_art
 	t_component		south;
 	t_component		west;
 	t_component		east;
+	t_component		ammo;
+	t_component		title_menu;
+	t_component		mouse_cursor;
 	t_component		hand_idle;
 	t_component		hand_shoot;
-	t_component		ammo;
+	t_component		hand_reload_1;
+	t_component		hand_reload_2;
 }	t_art;
 
 typedef struct s_hook
@@ -99,6 +106,7 @@ typedef struct s_hook
 	int				state_key_a;
 	int				state_key_s;
 	int				state_key_d;
+	int				state_key_r;
 	int				state_key_left;
 	int				state_key_right;
 	int				state_mouse_left;
@@ -151,6 +159,9 @@ typedef struct s_game
 	t_check_parse	check_parse;
 	t_ray			ray;
 	int				ammo_count;
+	int				reload_time;
+	int				shoot_time;
+	t_pixel			mouse_cursor;
 }	t_game;
 
 /* srcs/hook/ */
@@ -161,6 +172,10 @@ int			mouse_press(int keycode, int x, int y, t_game *game);
 int			mouse_release(int keycode, int x, int y, t_game *game);
 int			loop_hook(t_game *game);
 void		reset_vector(t_game *game, t_hook hook, char **map);
+int			title_menu_loop_hook(t_game *game);
+int			title_menu_mouse_move(int x, int y, t_game *game);
+int			title_menu_mouse_press(int keycode, int x, int y, t_game *game);
+int			title_menu_key_press(int keycode, t_game *game);
 
 /* srcs/init/ */
 int			init_cub3d(t_game *game, int argc, char **argv);
