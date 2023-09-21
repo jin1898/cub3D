@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:21:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:31:57 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:52:44 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	_render_images(t_game *game)
 
 int	loop_hook(t_game *game)
 {
-	
 	game->hook.loop_hook_term++;
 	if (game->hook.loop_hook_term == 30)
 	{

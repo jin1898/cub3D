@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 17:57:54 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:30:55 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:00:05 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,26 +95,24 @@ static void	_get_mini_map_margin(t_game *game)
 
 void	render_mini_map(t_game *game)
 {
-	int	x;
-	int	y;
+	t_pixel	pos;
 
-	x = 0;
-	y = 0;
+	pos = set_pixel(0, 0);
 	_get_mini_map_margin(game);
 	_render_background(&game->mini);
-	while (game->map[y])
+	while (game->map[pos.y])
 	{
-		while (game->map[y][x])
+		while (game->map[pos.y][pos.x])
 		{
-			if (game->map[y][x] == '1')
+			if (game->map[pos.y][pos.x] == '1')
 				_render_wall(&game->mini,
-					x + game->mini_map_margin.x,
-					y + game->mini_map_margin.y,
+					pos.x + game->mini_map_margin.x,
+					pos.y + game->mini_map_margin.y,
 					game->mini_map_tile_size);
-			x++;
+			pos.x++;
 		}
-		y++;
-		x = 0;
+		pos.y++;
+		pos.x = 0;
 	}
 	_render_player(game,
 		game->player.x + game->mini_map_margin.x,

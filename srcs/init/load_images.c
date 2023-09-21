@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:41:46 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 02:43:14 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:50:19 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,11 @@ int	load_images(t_game *game)
 		|| game->mini.img == NULL || game->scene.img == NULL
 		|| game->art.hand_idle.img == NULL
 		|| game->art.hand_shoot.img == NULL
-		|| game->art.ammo.img == NULL)
+		|| game->art.ammo.img == NULL
+		|| game->art.title_menu.img == NULL
+		|| game->art.mouse_cursor.img == NULL
+		|| game->art.hand_reload_1.img == NULL
+		|| game->art.hand_reload_2.img == NULL)
 		return (FAILURE);
 	return (SUCCESS);
 }

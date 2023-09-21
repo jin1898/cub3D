@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press.c                                      :+:      :+:    :+:   */
+/*   title_menu_key_press.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 23:53:00 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 14:52:32 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/21 09:41:49 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/21 14:51:40 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	mouse_press(int keycode, int x, int y, t_game *game)
+int	title_menu_key_press(int keycode, t_game *game)
 {
-	(void)x;
-	(void)y;
-	if (keycode == MOUSE_LEFT)
-	{
-		if (game->ammo_count > 0 && game->reload_time == 0)
-		{
-			game->ammo_count--;
-			game->hook.state_mouse_left = TRUE;
-		}
-	}
+	if (keycode == KEY_ESC)
+		exit_game(game);
 	return (0);
 }

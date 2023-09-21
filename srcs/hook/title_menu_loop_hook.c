@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_press.c                                      :+:      :+:    :+:   */
+/*   title_menu_loop_hook.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 23:53:00 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 14:52:32 by jeekpark         ###   ########.fr       */
+/*   Created: 2023/09/21 09:30:56 by jeekpark          #+#    #+#             */
+/*   Updated: 2023/09/21 14:51:48 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	mouse_press(int keycode, int x, int y, t_game *game)
+int	title_menu_loop_hook(t_game *game)
 {
-	(void)x;
-	(void)y;
-	if (keycode == MOUSE_LEFT)
-	{
-		if (game->ammo_count > 0 && game->reload_time == 0)
-		{
-			game->ammo_count--;
-			game->hook.state_mouse_left = TRUE;
-		}
-	}
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->art.title_menu.img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->art.mouse_cursor.img,
+		game->mouse_cursor.x, game->mouse_cursor.y);
 	return (0);
 }
