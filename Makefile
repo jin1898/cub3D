@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/21 09:45:06 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/22 19:57:20 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,44 +72,45 @@ SRCS			=	srcs/main.c									\
 OBJS			=	$(SRCS:.c=.o)
 
 LIBFT_A			=	srcs/libft/libft.a
-LIBMLX_FLAGS	=	-L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+LIBMLX_FLAGS	=	-L. -lmlx -framework OpenGL -framework AppKit
 
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	#$(MAKE) -C srcs/mlx
-	#mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
+	$(MAKE) -C srcs/mlx
+	mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
+	@clear
+	@echo "\n\033[1;33m"
+	@echo ' _   _______ _      _      ___________  ______ '
+	@echo '| | / /_   _| |    | |    |  ___| ___ \ | ___ \'
+	@echo '| |/ /  | | | |    | |    | |__ | |_/ / | |_/ /'
+	@echo '|    \  | | | |    | |    |  __||    /  | ___ \'
+	@echo '| |\  \_| |_| |____| |____| |___| |\ \  | |_/ /'
+	@echo '\_| \_/\___/\_____/\_____/\____/\_| \_| \____/ '
+	@echo "Mandatory part                    Killer banana\033[1;32m\n\n"
+	@echo '                 GAME IS READY                 '
+	@echo "\n"
+	@echo "          run [./cub3D *.cub] to play          "
+	@echo ''
+	@echo "\033[0m\n"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 clean :
 	$(MAKE) -C srcs/libft clean
-	#$(MAKE) -C srcs/mlx clean
+	$(MAKE) -C srcs/mlx clean
 	rm -rf $(OBJS) 
 
 fclean :
 	$(MAKE) -C srcs/libft fclean
-	#$(MAKE) -C srcs/mlx clean
-	rm -rf $(OBJS) $(NAME) #./libmlx.dylib
+	$(MAKE) -C srcs/mlx clean
+	rm -rf $(OBJS) $(NAME) ./libmlx.dylib
 
 re :
 	$(MAKE) fclean
 	$(MAKE) all
 
 .PHONY: all re clean fclean bonus
-
-
-# ----- for M1 ----------------------------------------------------------------#
-CC_M1				=	arch -x86_64 cc
-LIBMLX_M1_FLAGS		=	-L. -lmlx -framework OpenGL -framework Appkit
-m1 :
-	make CC="$(CC_M1)" LIBMLX_FLAGS="$(LIBMLX_M1_FLAGS)" all
-# 제출 전 해야할 것.
-# 	1. ./libmlx.dylib 삭제
-# 	2. ./includes/mlx.h 삭제
-# 	3. 해당 주석 파트 전체 삭제.
-#	4. 작동 확인.
-# -----------------------------------------------------------------------------#
