@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_validation_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 16:57:55 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/01 13:53:38 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/22 07:08:41 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	_check_line(char *str)
 	{
 		if (str[i] == ' ' || str[i] == '1' || str[i] == '0'
 			|| str[i] == 'N' || str[i] == 'S' || str[i] == 'W'
-			|| str[i] == 'E' || str[i] == '2')
+			|| str[i] == 'E')
 			i++;
 		else
 			return (FAILURE);

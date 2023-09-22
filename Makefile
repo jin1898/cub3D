@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/21 09:45:06 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/22 09:38:47 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g
 HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
@@ -104,6 +104,7 @@ re :
 
 # ----- for M1 ----------------------------------------------------------------#
 CC_M1				=	arch -x86_64 cc
+CC_M1_arm64			=	arch arm64 -Wall -O2 cc
 LIBMLX_M1_FLAGS		=	-L. -lmlx -framework OpenGL -framework Appkit
 m1 :
 	make CC="$(CC_M1)" LIBMLX_FLAGS="$(LIBMLX_M1_FLAGS)" all
