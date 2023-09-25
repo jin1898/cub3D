@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/22 23:05:35 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/25 18:22:21 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			=	srcs/main.c									\
 					srcs/init/map_validation.c					\
 					srcs/init/map_validation_dfs.c				\
 					srcs/init/map_validation_is_surround.c		\
+					srcs/init/reset_terminal_interface.c		\
 					srcs/hook/key_press.c						\
 					srcs/hook/key_release.c						\
 					srcs/hook/mouse_move.c						\
@@ -78,7 +79,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	$(MAKE) -C srcs/mlx 2>/dev/null
+	make -j 1 -C srcs/mlx 2>/dev/null
 	mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
 	@clear
@@ -89,9 +90,9 @@ $(NAME) : $(OBJS) $(HEADER)
 	@echo '|    \  | | | |    | |    |  __||    /  | ___ \'
 	@echo '| |\  \_| |_| |____| |____| |___| |\ \  | |_/ /'
 	@echo '\_| \_/\___/\_____/\_____/\____/\_| \_| \____/ '
-	@echo "Mandatory part                    Killer banana\033[1;32m\n\n"
+	@echo "Mandatory part                    Killer banana\n\n"
 	@echo '                 GAME IS READY                 '
-	@echo "\n"
+	@echo "\n\033[1;32m"
 	@echo "          run [./cub3D *.cub] to play          "
 	@echo ''
 	@echo "\033[0m\n"

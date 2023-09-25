@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 18:01:59 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/22 19:53:30 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:23:00 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int	init_cub3d(t_game *game, int argc, char **argv)
 	if (load_images(game) == FAILURE)
 		return (FAILURE);
 	_init_title_menu_hook(game);
+	reset_terminal_interface(game);
 	return (SUCCESS);
 }
