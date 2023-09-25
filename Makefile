@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/22 19:57:20 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/22 23:05:35 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra #-Werror
 HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
@@ -78,7 +78,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
 	$(MAKE) -C srcs/libft
-	$(MAKE) -C srcs/mlx
+	$(MAKE) -C srcs/mlx 2>/dev/null
 	mv ./srcs/mlx/libmlx.dylib ./libmlx.dylib
 	$(CC) $(CFLAGS) -I $(HEADER) $(OBJS) $(LIBFT_A) $(LIBMLX_FLAGS) -o $(NAME)
 	@clear
