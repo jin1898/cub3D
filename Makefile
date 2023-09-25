@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/22 09:38:47 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/09/25 14:14:02 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -g
+CFLAGS			=	-Wall -Wextra -Werror
 HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
@@ -88,7 +88,7 @@ $(NAME) : $(OBJS) $(HEADER)
 clean :
 	$(MAKE) -C srcs/libft clean
 	#$(MAKE) -C srcs/mlx clean
-	rm -rf $(OBJS) 
+	rm -rf $(OBJS)
 
 fclean :
 	$(MAKE) -C srcs/libft fclean

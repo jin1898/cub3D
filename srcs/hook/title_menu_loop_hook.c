@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   title_menu_loop_hook.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 09:30:56 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 14:51:48 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:46:16 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

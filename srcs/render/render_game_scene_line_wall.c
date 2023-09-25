@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_scene_line_wall.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 15:50:52 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/20 16:38:03 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:51:44 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	_pipette_wall_by_face(t_game *game, int i, int size)
 					map_int(i, size, game->art.south.height))));
 	else if (game->ray.last_move == 'x' && game->ray.step.x < 0)
 		return (pipette_color_from_img(&game->art.west,
-				set_pixel((int)map_double(game->ray.hit_point, 1, 
+				set_pixel((int)map_double(game->ray.hit_point, 1,
 						game->art.west.width),
 					map_int(i, size, game->art.west.height))));
 	else if (game->ray.last_move == 'x' && game->ray.step.x > 0)
