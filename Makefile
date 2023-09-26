@@ -6,13 +6,13 @@
 #    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/26 21:15:02 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/09/26 18:35:16 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3D
 CC				=	cc
-CFLAGS			=	-Wall -Wextra #-Werror
+CFLAGS			=	-Wall -Wextra -Werror
 HEADER			=	./includes/
 
 SRCS			=	srcs/main.c									\
