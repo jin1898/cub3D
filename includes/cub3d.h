@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/25 18:21:52 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:50:15 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@
 # define DEGREE_UNIT 3
 # define DISTANCE_UNIT 0.05
 # define MOUSE_SPEED 0.08
+
+typedef struct s_listNode
+{
+	struct listNode	*next;
+	int				y;
+	int				x;
+}	t_node;
 
 typedef struct s_pixel
 {
@@ -128,10 +135,8 @@ typedef struct s_ray
 	int				camera_x;
 }	t_ray;
 
-
 typedef struct s_game
 {
-	
 	void			*mlx;
 	void			*win;
 	char			**argv;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeekpark <jeekpark@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:42:17 by jeekpark          #+#    #+#             */
-/*   Updated: 2022/11/17 15:52:54 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:30:18 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (res == (void *) 0)
 		return ((void *) 0);
 	i = 0;
-	while (s <= e && s + e != 0)
+	while (s <= e)
 		res[i++] = s1[s++];
 	res[i] = '\0';
 	return (res);

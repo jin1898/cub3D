@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
 #    Updated: 2023/09/26 18:35:16 by jeekpark         ###   ########.fr        #
@@ -115,3 +115,4 @@ re :
 	$(MAKE) all
 
 .PHONY: all re clean fclean bonus
+
