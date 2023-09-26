@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_validation_get_rgb.c                          :+:      :+:    :+:   */
+/*   line_validation_rgb_to_int.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 17:00:25 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/09/10 17:01:54 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/26 20:58:08 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,9 @@
 static int	_number_validation(size_t i1, size_t i2, char **str)
 {
 	if (i2 >= 3)
-	{
-		free_split(str);
 		return (FAILURE);
-	}
 	if (!(str[i1][i2] >= '0' && str[i1][i2] <= '9'))
-	{
-		free_split(str);
 		return (FAILURE);
-	}
 	return (SUCCESS);
 }
 
