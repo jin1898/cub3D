@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeekpark <jeekpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 18:58:34 by jeekpark          #+#    #+#              #
-#    Updated: 2023/09/25 18:22:21 by jeekpark         ###   ########.fr        #
+#    Updated: 2023/09/26 14:16:27 by jeekpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ $(NAME) : $(OBJS) $(HEADER)
 	@echo '\_| \_/\___/\_____/\_____/\____/\_| \_| \____/ '
 	@echo "Mandatory part                    Killer banana\n\n"
 	@echo '                 GAME IS READY                 '
-	@echo "\n\033[1;32m"
+	@echo "\n"
 	@echo "          run [./cub3D *.cub] to play          "
 	@echo ''
 	@echo "\033[0m\n"
