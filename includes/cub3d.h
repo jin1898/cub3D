@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/26 18:06:00 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/26 20:50:15 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@
 # define DEGREE_UNIT 3
 # define DISTANCE_UNIT 0.05
 # define MOUSE_SPEED 0.08
+
+typedef struct s_listNode
+{
+	struct listNode	*next;
+	int				y;
+	int				x;
+}	t_node;
 
 typedef struct s_pixel
 {

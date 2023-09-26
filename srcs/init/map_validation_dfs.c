@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_dfs.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:38:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/09/11 15:39:23 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/26 21:01:48 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	_check_map_four_directions(char **map, size_t x, size_t y)
 	dir_y[3] = -1;
 	if (map[y][x] == '1' || map[y][x] == 'x')
 		return (1);
-	if (map[y][x] == '3')
+	if (map[y][x] == '3'|| map[y][x] == ' ')
 		return (0);
 	map[y][x] = 'x';
 	i = -1;
