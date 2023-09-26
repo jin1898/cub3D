@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:02:08 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/10 17:33:52 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/09/26 21:14:35 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static int	_count_arguments(char **str, size_t total)
 static int	_check_do_split_rgb(char **split_rgb, t_game *game)
 {
 	if (_count_arguments(split_rgb, 3) == FAILURE)
-	{
-		free_split(split_rgb);
 		return (FAILURE);
-	}
 	if (line_validation_get_rgb8(game, split_rgb) == FAILURE)
 	{
 		free_split(split_rgb);
@@ -54,6 +51,7 @@ int	line_validation_rgb(t_game *game)
 		return (FAILURE);
 	if (_count_arguments(split, 2) == FAILURE)
 		return (FAILURE);
+	//여기다가 ,세는거 넣기
 	split_rgb = ft_split(split[1], ',');
 	free_split(split);
 	if (split_rgb == NULL)
