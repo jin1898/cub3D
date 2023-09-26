@@ -2,7 +2,7 @@ NO ./textures/METALTILE.xpm
 SO ./textures/METALTILE.xpm
 WE ./textures/STORAGE.xpm
 EA ./textures/STORAGE.xpm
-C 40,40,50,
+C 40,40,50
 F 100,100,120
 
 11111111111
@@ -11,3 +11,6 @@ F 100,100,120
 10000N00001
 10000000001
 11111111111
+1
+1
+1
