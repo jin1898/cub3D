@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:06:18 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/25 13:50:02 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/09/26 18:06:00 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,7 @@ int			map_validation(t_game *game);
 int			map_validation_is_surround(char **map, t_game *game);
 int			map_validation_dfs(size_t x, size_t y,
 				int *is_map_empty, char **test_map);
+void		reset_terminal_interface(t_game *game);
 
 /* srcs/render/ */
 void		render_mini_map(t_game *game);

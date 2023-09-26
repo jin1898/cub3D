@@ -1,7 +1,7 @@
-NO ./textures/blue_wallpaper.xpm
-SO ./textures/blue_wallpaper.xpm
-WE ./textures/green_wallpaper.xpm
-EA ./textures/0000.dummy/eva.xpm
+NO ./textures/0000.dummy/red_wallpaper.xpm
+SO ./textures/0000.dummy/blue_wallpaper.xpm
+WE ./textures/0000.dummy/green_wallpaper.xpm
+EA ./textures/0000.dummy/yellow_wallpaper.xpm
 F 128,171,111
 C 165,229,255
 

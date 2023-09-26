@@ -6,7 +6,7 @@
 /*   By: jeekpark <jeekpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 02:34:51 by jeekpark          #+#    #+#             */
-/*   Updated: 2023/09/21 14:54:05 by jeekpark         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:57:15 by jeekpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	_put_resized_img(t_pixel pos, t_pixel size,
 
 static void	_render_ammo(t_game *game, int index)
 {
-	_put_resized_img(set_pixel(10 + index * 50, WIN_H - 70),
+	_put_resized_img(set_pixel(10 + index * 40, WIN_H - 65),
 		set_pixel(40, 60), &game->scene, &game->art.ammo);
 }
 
